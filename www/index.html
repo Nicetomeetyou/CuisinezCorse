@@ -29,6 +29,7 @@
     <body>
         <script type="text/javascript" src="phonegap.js"></script>
 		<script type="text/javascript" charset="utf-8" src="js/jq.ui.min.js"></script> 
+		<script type="text/javascript" charset="utf-8" src="js/index.min.js"></script> 
         <script type="text/javascript">
 			var webRoot="./";
 			$.ui.autoLaunch=false;
@@ -36,7 +37,7 @@
 			
 			var init = function(){
 			   $.ui.backButtonText="Back";  
-			   window.setTimeout(function(){$.ui.launch();},1500);
+			   window.setTimeout(function(){$.ui.launch();},500);
 			   //$.ui.removeFooterMenu(); This would remove the bottom nav menu
 			};
 			document.addEventListener("DOMContentLoaded",init,false);  
@@ -56,18 +57,29 @@
 		<div id="jQUi">
 			<!-- this is the header div -->
 			<div id="header">
-				<a id='menubadge' onclick='jq.ui.toggleSideMenu()' style='float:right;margin-top:4px' class='menuButton'></a>
+				<div class="width100">
+					<div style="width:90%; float:left;">
+						<div  style="margin:auto; max-width:326px; padding-top:20px;"><img class="width100" src="img/logo.png" /></div>
+					</div>
+					<div style="width:10%; float:left;"><a id='menubadge' onclick='jq.ui.toggleSideMenu()' style='margin:20px 20px 0 0; float:left;' class='menuButton'></a></div>
+				</div>
 			</div>
-
+			
 			
 			<div id="content">
 				<!-- here is where you can add your panels -->
-				<div title='Welcome' id="main" class="panel" selected="true" >
-				This is a basic skeleton jqUi sample
+				<div title='' id="main" class="panel" selected="true" >
+					<li><a href="#jqm1" ><img src="img/logo.png" /></a></li>
 				</div> 
-
+				
+				<div id="jqm1" class="panel"  title="" data-nav="menu_jqmobi">
+					$("#div").removeClass() - removes a css class to the element.<br /><br />
+					<div style='border:1px solid black' id="jqm16_content" class="class16">This is some content</div><br />
+					<a class="button" href='javascript:;' onclick='($("#jqm16_content").removeClass("class16"))'>Remove the Class</a>
+				</div>
+				
 			</div>
-
+			
 			<!-- bottom navbar.  Add additional tabs here -->
 			<div id="navbar">
 				<a href="#main" id='navbar_home' class='icon home' >home</a>

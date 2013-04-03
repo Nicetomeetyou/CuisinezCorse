@@ -24,7 +24,7 @@ body {
 	font-family:Arial, Helvetica, sans-serif;
 	color:#fff;
 	font-size:14px;
-	background:rgba(19,29,38,1); /* primary background color */
+	background:#8C5429; /* primary background color */
 	
 	
 	display: -webkit-box;
@@ -108,10 +108,9 @@ width:100%;
 	display:block;
 	z-index:250;
 	-webkit-box-sizing:border-box; box-sizing:border-box;
-	height:48px;
+	height:90px;
     left:0px;right:0px;
 	background-image:-webkit-gradient(linear, left top, left bottom, from(rgba(16,25,33,1)), to(rgba(14,23,32,1)), color-stop(.5, rgba(27,36,46,1)), color-stop(.5, rgba(14,23,32,1)));
-	-webkit-box-shadow:0px 0px 24px rgba(0,0,0,0.8); box-shadow:0px 0px 24px rgba(0,0,0,0.8);
 } /* This is masthead bar that appears at the top of the UI */
 
 #header > * {
@@ -150,6 +149,7 @@ z-index:2;
 	top:0px;
 	max-width:50px;
 	text-overflow:ellipsis;
+	z-index:5;
 } /* Sets up positioning of the back button which appears in the header */
 
 #backButton > div {
@@ -225,7 +225,7 @@ background:#333;
 	z-index:180;
 	display:block;
 	position:absolute;
-	top:48px;
+	top:90px;
 	bottom:62px;
 	left:0px;right:0px;
 	overflow:hidden;
@@ -237,7 +237,8 @@ background:#333;
 	height:100%;
 	display:none;
     position:absolute; top:0px; left:0px;
-	background:rgba(19,29,38,1);
+	/*background:rgba(19,29,38,1);*/
+	background:url(../img/trame-light.jpg) repeat 0 0; width:100%; height:100%;
     margin-top:10px;
     margin-bottom:10px;
 	overflow-y:auto;
@@ -884,16 +885,13 @@ select[disabled]~div {
 }
 
 .menuButton {
-
 		position:relative;
-		width:48px;	height:48px;
+		width:35px;	height:35px;
 		padding:9px 4px;
-		border-right:1px solid #666;
-		box-shadow:1px 0 0 #000;
 		background-color:transparent;
 		display:inline-block;
 	}
-	.menuButton:active { background:rgba(255,255,255,0.4); }
+	.menuButton:active { background:#52321E; }
 	.menuButton:before {
 		content:'';
 		position:absolute;
