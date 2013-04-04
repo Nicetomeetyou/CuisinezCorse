@@ -79,72 +79,66 @@
 				<!-- here is where you can add your panels -->
 				<div title='' id="main" class="panel" selected="true" >
 					<div class="color-brown-title size20 title-recette-mois tac">Les recettes du mois</div>
-					
-					<li><a href="#webcarousel" ><img src="img/logo.png" /></a></li>
-				</div> 
-				
-				<div title="" class="panel" id="webcarousel"  style="overflow:hidden;">
-					<style>
-					.carousel_paging2 {
-						border-radius: 10px;
-						
-						background: #ccc;
-						width: 10px;
-						height: 10px;
-						display:inline-block;
-					}
-
-					.carousel_paging2_selected {
-						border-radius: 10px;
-						
-						background: #000;
-						width: 10px;
-						height: 10px;
-						display:inline-block;
-					}
-
-					.spacer {
-						width: 10px;
-						float: left;
-					}
-
-					.carousel_content {
-						-webkit-transform: translate3d(0, 0, 0);
-					}
-					</style>
-					<script>
-					 var carousel;
-						function init_carousel() {
-							carousel=$("#carousel").carousel({
-								pagingDiv: "carousel_dots",
-								pagingCssName: "carousel_paging2",
-								pagingCssNameSelected: "carousel_paging2_selected",
-								preventDefaults:false
-							});
+					<div title="" class="" id="webcarousel"  style="overflow:visible;">
+						<style>
+						.carousel_paging2 {
+							border-radius: 10px;
+							
+							background: #ccc;
+							width: 10px;
+							height: 10px;
+							display:inline-block;
 						}
-						window.addEventListener("load", init_carousel, false);
-					
-					</script>
-						<div id="carousel_dots" style="text-align: center; margin:auto;  display : table; clear: both; position: relative; top: 40%; z-index: 200">
-						</div>
-						<div id="carousel" style="display:block;height:50%;width:100%;">
-							<div class="tac">
-								<img style="max-width:400px;" src="img/exemple.png" />
-							</div>
-							<div class="tac">
-								<img style="max-width:400px;" src="img/exemple.png" />
-							</div>
-							<div class="tac">
-								<img style="max-width:400px;" src="img/exemple.png" />
-							</div>
-							<div class="tac">
-								<img style="max-width:400px;" src="img/exemple.png" />
-							</div>
-						</div>
-						
-						<div id="carousel_dots2" style="text-align: center; clear: both; position: relative; top: -30%; left: 98%; z-index: 200; width: 20px;"></div>
-				</div>
 
+						.carousel_paging2_selected {
+							border-radius: 10px;
+							
+							background: #000;
+							width: 10px;
+							height: 10px;
+							display:inline-block;
+						}
+
+						.spacer {
+							width: 10px;
+							float: left;
+						}
+
+						.carousel_content {
+							-webkit-transform: translate3d(0, 0, 0);
+						}
+						</style>
+						<script>
+						 var carousel;
+							function init_carousel() {
+								carousel=$("#carousel").carousel({
+									pagingDiv: "carousel_dots",
+									pagingCssName: "carousel_paging2",
+									pagingCssNameSelected: "carousel_paging2_selected",
+									preventDefaults:false
+								});
+							}
+							window.addEventListener("load", init_carousel, false);
+						
+						</script>
+							<div id="carousel_dots" style="text-align: center; margin:auto;  display : table; clear: both; position: relative; top: 300px; z-index: 200">
+							</div>
+							<div id="carousel" style="display:block;height:450px;width:100%;">
+								<div class="tac">
+									<img style="max-width:300px;" src="img/exemple.png" />
+								</div>
+								<div class="tac">
+									<img style="max-width:300px;" src="img/exemple.png" />
+								</div>
+								<div class="tac">
+									<img style="max-width:300px;" src="img/exemple.png" />
+								</div>
+								<div class="tac">
+									<img style="max-width:300px;" src="img/exemple.png" />
+								</div>
+							</div>
+					</div>
+				</div> 
 				
 				<div id="jqm1" class="panel"  title="" data-nav="menu_jqmobi">
 					$("#div").removeClass() - removes a css class to the element.<br /><br />
