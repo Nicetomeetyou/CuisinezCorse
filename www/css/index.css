@@ -44,15 +44,25 @@ body {
 .tac { text-align:center; }
 
 .color-brown-title { color:#8C5227; }
+.color-grey-title { color:#928B7F; }
 .size20 { font-size:20px; text-shadow:0px 2px rgba(0,0,0,.1); }
+.size14 { font-size:14px; text-shadow:0px 2px rgba(0,0,0,.1); }
+
+.space20 { height:20px; }
+
+.trame-light { background:url(../img/trame-light.jpg) repeat 0 0; width:100%; height:100%; }
+.trame-dark { background:url(../img/trame-dark.jpg) repeat 0 0; width:100%; height:100%; }
 /* ---------------------------------------------------- */
 
-/* SWIPE ---------------------------------------------- */
-
+/* CAROUSEL ------------------------------------------- */
+.carousel_paging2 { border-radius: 10px; background: #C4B4A6; width: 10px; height: 10px; display:inline-block; -webkit-box-shadow:0px 2px 0px rgba(255,255,255,0.8); box-shadow:0px 2px 0px rgba(255,255,255,0.8);}
+.carousel_paging2_selected { border-radius: 10px; background: #8C5429; width: 10px; height: 10px; display:inline-block; -webkit-box-shadow:0px 2px 0px rgba(255,255,255,0.8); box-shadow:0px 2px 0px rgba(255,255,255,0.8);}
+.spacer { width: 10px; float: left; }
+.carousel_content { -webkit-transform: translate3d(0, 0, 0); }
 /* ---------------------------------------------------- */
 
 /* HEADER --------------------------------------------- */
-.header-container-logo { margin:auto; max-width:240px; padding:17px 0 0 45px; }
+.header-container-logo { margin:auto; max-width:215px; padding:17px 0 0 45px; }
 /* ---------------------------------------------------- */
 
 /* HOME ----------------------------------------------- */

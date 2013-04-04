@@ -63,7 +63,7 @@
 
 
                 // initial setup
-                this.container.style.overflow = "hidden";
+                this.container.style.overflow = "visible";
                 if (this.vertical) {
                     this.horizontal = false;
                 }
@@ -139,7 +139,7 @@
                 if (e.touches.length === 1) {
                     
                     this.movingElement = true;
-                    //this.startY = e.touches[0].pageY;
+                    this.startY = e.touches[0].pageY;
                     this.startX = e.touches[0].pageX;
                     var cssMatrix=$.getCssMatrix(this.el);
 
@@ -166,13 +166,13 @@
                 }
                 
                 var rawDelta = {
-                    x: e.touches[0].pageX - this.startX
-                    //y: e.touches[0].pageY - this.startY
+                    x: e.touches[0].pageX - this.startX,
+                    y: e.touches[0].pageY - this.startY
                 };
                 
                 if (this.vertical) {
                     var movePos = { x: 0, y: 0 };
-                    //this.dy = e.touches[0].pageY - this.startY;
+                    this.dy = e.touches[0].pageY - this.startY;
                     
                     this.dy += this.cssMoveStart;
                     movePos.y = this.dy;
@@ -323,7 +323,7 @@
                     }
                
                 if (runFinal && this.pagingFunction && typeof this.pagingFunction == "function")
-                    this.pagingFunction(currInd);
+                    this.pagingFunction(ind);
             },
             
             moveCSS3: function(el, distanceToMove, time, timingFunction) {
