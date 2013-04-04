@@ -25,14 +25,20 @@
 		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
 		<link rel="stylesheet" type="text/css" href="css/jq.ui.css" title="default" />
-        <title>Hello World</title>
+        <title>CuisinezCorse</title>
     </head>
     <body>
         <script type="text/javascript" src="phonegap.js"></script>
 		<script type="text/javascript" charset="utf-8" src="js/jq.ui.min.js"></script> 
 		<script type="text/javascript" charset="utf-8" src="js/index.min.js"></script> 
-		<script type="text/javascript" charset="utf-8" src="js/swipe.js"></script> 
-		<script type="text/javascript" charset="utf-8" src="js/jquery-1.9.1.min"></script> 
+		<script type="text/javascript" charset="utf-8" src="js/jquery-1.9.1.min"></script>
+		<script type="text/javascript" charset="utf-8" src="js/jq.debug.js"></script> 
+		<script type="text/javascript" charset="utf-8" src="js/jq.swipe.js"></script> 
+		<script type="text/javascript" charset="utf-8" src="js/jq.carousel.js"></script> 
+		<script type="text/javascript" charset="utf-8" src="js/jq.drawer.js"></script> 
+		<script type="text/javascript" charset="utf-8" src="js/jq.shake.js"></script> 
+		<script type="text/javascript" charset="utf-8" src="js/jq.alphatable.js"></script> 
+		<script type="text/javascript" charset="utf-8" src="js/jq.template.js"></script> 
         <script type="text/javascript">
 			var webRoot="./";
 			$.ui.autoLaunch=false;
@@ -41,7 +47,7 @@
 			var init = function(){
 			   $.ui.backButtonText="Back";  
 			   window.setTimeout(function(){$.ui.launch();},500);
-			   //$.ui.removeFooterMenu(); This would remove the bottom nav menu
+			   $.ui.removeFooterMenu(); //This would remove the bottom nav menu
 			};
 			document.addEventListener("DOMContentLoaded",init,false);  
 			$.ui.ready(function(){});
@@ -74,49 +80,68 @@
 				<div title='' id="main" class="panel" selected="true" >
 					<div class="color-brown-title size20 title-recette-mois tac">Les recettes du mois</div>
 					
-					<div id='mySwipe' style='max-width:400px;margin:0 auto;' class='swipe'>
-					  <div class='swipe-wrap'>
-						<div><b>0</b></div>
-						<div><b>1</b></div>
-						<div><b>2</b></div>
-						<div><b>3</b></div>
-						<div><b>4</b></div>
-						<div><b>5</b></div>
-						<div><b>6</b></div>
-						<div><b>7</b></div>
-						<div><b>8</b></div>
-						<div><b>9</b></div>
-						<div><b>10</b></div>
-						<div><b>11</b></div>
-						<div><b>12</b></div>
-						<div><b>13</b></div>
-						<div><b>14</b></div>
-						<div><b>15</b></div>
-						<div><b>16</b></div>
-						<div><b>17</b></div>
-						<div><b>18</b></div>
-						<div><b>19</b></div>
-						<div><b>20</b></div>
-					  </div>
-					</div>
-					<div style='text-align:center;padding-top:20px;'>
-						<button onclick='mySwipe.prev()'>prev</button> 
-						<button onclick='mySwipe.next()'>next</button>
-					</div>
-					<script>
-						var elem = document.getElementById('mySwipe');
-						window.mySwipe = Swipe(elem, {
-						  // startSlide: 4,
-						  // auto: 3000,
-						  // continuous: true,
-						  // disableScroll: true,
-						  // stopPropagation: true,
-						  // callback: function(index, element) {},
-						  // transitionEnd: function(index, element) {}
-						});
-					</script>
-					<!--<li><a href="#jqm1" ><img src="img/logo.png" /></a></li>-->
+					<li><a href="#webcarousel" ><img src="img/logo.png" /></a></li>
 				</div> 
+				
+				<div title="" class="panel" id="webcarousel"  style="overflow:hidden;">
+					<style>
+					.carousel_paging2 {
+						border-radius: 10px;
+						
+						background: #ccc;
+						width: 10px;
+						height: 10px;
+						display:inline-block;
+					}
+
+					.carousel_paging2_selected {
+						border-radius: 10px;
+						
+						background: #000;
+						width: 10px;
+						height: 10px;
+						display:inline-block;
+					}
+
+					.spacer {
+						width: 10px;
+						float: left;
+					}
+
+					.carousel_content {
+						-webkit-transform: translate3d(0, 0, 0);
+					}
+					</style>
+					<script>
+					 var carousel;
+						function init_carousel() {
+							carousel=$("#carousel").carousel({
+								pagingDiv: "carousel_dots",
+								pagingCssName: "carousel_paging2",
+								pagingCssNameSelected: "carousel_paging2_selected",
+								preventDefaults:false
+							});
+						}
+						window.addEventListener("load", init_carousel, false);
+					
+					</script>
+						<div id="carousel_dots" style="text-align: center; margin:auto;  display : table; clear: both; position: relative; top: 40%; z-index: 200">
+						</div>
+						<div id="carousel" style="display:block;height:50%;width:100%;">
+								<div style="background: yellow;">
+									<a href="javascript:alert('test');">
+											I'm a horizontal carousel
+										</a>
+									</div>
+								<div style="background: green;"></div>
+								<div style="background: blue;"></div>
+								<div style="background: pink;"></div>
+							</div>
+						
+						
+						<div id="carousel_dots2" style="text-align: center; clear: both; position: relative; top: -30%; left: 98%; z-index: 200; width: 20px;"></div>
+				</div>
+
 				
 				<div id="jqm1" class="panel"  title="" data-nav="menu_jqmobi">
 					$("#div").removeClass() - removes a css class to the element.<br /><br />
