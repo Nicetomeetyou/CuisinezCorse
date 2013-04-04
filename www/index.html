@@ -19,9 +19,9 @@
 -->
 <html>
     <head>
-		 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta http-equiv="Access-Control-Allow-Origin" content="*">
-        <meta name="format-detection" content="telephone=yes" />
+       <!-- <meta name="format-detection" content="telephone=yes" />-->
 		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
 		<link rel="stylesheet" type="text/css" href="css/jq.ui.css" title="default" />
@@ -31,6 +31,8 @@
         <script type="text/javascript" src="phonegap.js"></script>
 		<script type="text/javascript" charset="utf-8" src="js/jq.ui.min.js"></script> 
 		<script type="text/javascript" charset="utf-8" src="js/index.min.js"></script> 
+		<script type="text/javascript" charset="utf-8" src="js/swipe.js"></script> 
+		<script type="text/javascript" charset="utf-8" src="js/jquery-1.9.1.min"></script> 
         <script type="text/javascript">
 			var webRoot="./";
 			$.ui.autoLaunch=false;
@@ -59,10 +61,10 @@
 			<!-- this is the header div -->
 			<div id="header">
 				<div class="width100">
-					<div style="width:90%; float:left;">
-						<div  style="margin:auto; max-width:226px; padding-top:20px;"><img class="width100" src="img/logo.png" /></div>
+					<div class="fleft" style="width:87%;">
+						<div class="header-container-logo"><img class="width100" src="img/logo.png" /></div>
 					</div>
-					<div style="width:10%; float:left;"><a id='menubadge' onclick='jq.ui.toggleSideMenu()' style='margin:20px 20px 0 0; float:left;' class='menuButton'></a></div>
+					<div class="fleft" style="width:13%;"><a id='menubadge' onclick='jq.ui.toggleSideMenu()' style='margin:16px 40px 0 0;' class='menuButton fleft'></a></div>
 				</div>
 			</div>
 			
@@ -70,7 +72,50 @@
 			<div id="content">
 				<!-- here is where you can add your panels -->
 				<div title='' id="main" class="panel" selected="true" >
-					<li><a href="#jqm1" ><img src="img/logo.png" /></a></li>
+					<div class="color-brown-title size20 title-recette-mois tac">Les recettes du mois</div>
+					
+					<div id='mySwipe' style='max-width:400px;margin:0 auto;' class='swipe'>
+					  <div class='swipe-wrap'>
+						<div><b>0</b></div>
+						<div><b>1</b></div>
+						<div><b>2</b></div>
+						<div><b>3</b></div>
+						<div><b>4</b></div>
+						<div><b>5</b></div>
+						<div><b>6</b></div>
+						<div><b>7</b></div>
+						<div><b>8</b></div>
+						<div><b>9</b></div>
+						<div><b>10</b></div>
+						<div><b>11</b></div>
+						<div><b>12</b></div>
+						<div><b>13</b></div>
+						<div><b>14</b></div>
+						<div><b>15</b></div>
+						<div><b>16</b></div>
+						<div><b>17</b></div>
+						<div><b>18</b></div>
+						<div><b>19</b></div>
+						<div><b>20</b></div>
+					  </div>
+					</div>
+					<div style='text-align:center;padding-top:20px;'>
+						<button onclick='mySwipe.prev()'>prev</button> 
+						<button onclick='mySwipe.next()'>next</button>
+					</div>
+					<script>
+						var elem = document.getElementById('mySwipe');
+						window.mySwipe = Swipe(elem, {
+						  // startSlide: 4,
+						  // auto: 3000,
+						  // continuous: true,
+						  // disableScroll: true,
+						  // stopPropagation: true,
+						  // callback: function(index, element) {},
+						  // transitionEnd: function(index, element) {}
+						});
+					</script>
+					<!--<li><a href="#jqm1" ><img src="img/logo.png" /></a></li>-->
 				</div> 
 				
 				<div id="jqm1" class="panel"  title="" data-nav="menu_jqmobi">
@@ -82,15 +127,15 @@
 			</div>
 			
 			<!-- bottom navbar.  Add additional tabs here -->
-			<div id="navbar">
+			<!--<div id="navbar">
 				<a href="#main" id='navbar_home' class='icon home' >home</a>
-			</div>
+			</div>-->
 			
 			<!-- this is the default left side nav menu -->
 			<nav>
 				<div class='title'>Home</div>
 					<ul>
-						<li class="icon home mini"><a href="#main">Selectors</a></li>
+						<li class="icon home mini"></li>
 					</ul>
 			</nav>
 		</div>
