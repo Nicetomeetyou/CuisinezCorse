@@ -108,7 +108,7 @@ width:100%;
 	display:block;
 	z-index:250;
 	-webkit-box-sizing:border-box; box-sizing:border-box;
-	height:70px;
+	height:50px;
     left:0px;right:0px;
 	/*background-image:-webkit-gradient(linear, left top, left bottom, from(rgba(16,25,33,1)), to(rgba(14,23,32,1)), color-stop(.5, rgba(27,36,46,1)), color-stop(.5, rgba(14,23,32,1)));*/
 } /* This is masthead bar that appears at the top of the UI */
@@ -225,7 +225,7 @@ background:#333;
 	z-index:180;
 	display:block;
 	position:absolute;
-	top:70px;
+	top:50px;
 	bottom:62px;
 	left:0px;right:0px;
 	overflow:hidden;
@@ -886,7 +886,7 @@ select[disabled]~div {
 
 .menuButton {
 		position:relative;
-		width:35px;	height:35px;
+		width:35px;	height:20px;
 		padding:9px 4px;
 		background-color:transparent;
 		display:inline-block;
@@ -895,17 +895,17 @@ select[disabled]~div {
 	.menuButton:before {
 		content:'';
 		position:absolute;
-		width:70%; height:6px;
+		width:70%; height:4px;
 		border-radius:20px;
 		background:#52321E;
-		box-shadow:0 12px 0 #52321E;
-		-webkit-box-shadow:0 12px 0 #52321E;
+		box-shadow:0 8px 0 #52321E;
+		-webkit-box-shadow:0 8px 0 #52321E;
 	}
 	.menuButton:after {
 		content:'';
 		position:absolute;
-		top:33px;
-		width:70%; height:6px;
+		top:25px;
+		width:70%; height:4px;
 		border-radius:20px;
 		background:#52321E;
 	}

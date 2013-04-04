@@ -28,7 +28,7 @@
 
 body {
     background-attachment:fixed;
-    font-family:Titillium-medium !important;
+    font-family:Titillium-regular !important;
     font-size:12px;
     height:100%;
     margin:0px;
@@ -44,7 +44,7 @@ body {
 .tac { text-align:center; }
 
 .color-brown-title { color:#8C5227; }
-.size20 { font-size:30px; text-shadow:0px 2px rgba(0,0,0,.1); }
+.size20 { font-size:20px; text-shadow:0px 2px rgba(0,0,0,.1); }
 /* ---------------------------------------------------- */
 
 /* SWIPE ---------------------------------------------- */
@@ -52,9 +52,9 @@ body {
 /* ---------------------------------------------------- */
 
 /* HEADER --------------------------------------------- */
-.header-container-logo { margin:auto; max-width:240px; padding:25px 0 0 45px; }
+.header-container-logo { margin:auto; max-width:240px; padding:17px 0 0 45px; }
 /* ---------------------------------------------------- */
 
 /* HOME ----------------------------------------------- */
-.title-recette-mois { padding:20px; }
+.title-recette-mois { padding:20px 0 5px 0; }
 /* ---------------------------------------------------- */
