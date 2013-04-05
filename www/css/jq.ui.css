@@ -145,15 +145,16 @@ z-index:2;
 #backButton {
 	display:block;
 	position:absolute;
-	left:0px;
-	top:0px;
-	max-width:50px;
+	background:url(../img/back.jpg) no-repeat 0 0; width:10px; height:18px;
+	left:10px;
+	top:10px;
+	max-width:10px;
 	text-overflow:ellipsis;
 	z-index:5;
 } /* Sets up positioning of the back button which appears in the header */
 
 #backButton > div {
-	max-width:50px;
+	max-width:10px;
 	overflow:hidden;
 	text-overflow:ellipsis;
 } /* sets up sizing and handling of excess text for the type in the back button */

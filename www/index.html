@@ -28,10 +28,7 @@
         <title>CuisinezCorse</title>
     </head>
     <body>
-        <script type="text/javascript" src="phonegap.js"></script>
 		<script type="text/javascript" charset="utf-8" src="js/jq.ui.min.js"></script> 
-		<script type="text/javascript" charset="utf-8" src="js/index.min.js"></script> 
-		<script type="text/javascript" charset="utf-8" src="js/jquery-1.9.1.min"></script>
 		<script type="text/javascript" charset="utf-8" src="js/jq.debug.js"></script> 
 		<script type="text/javascript" charset="utf-8" src="js/jq.swipe.js"></script> 
 		<script type="text/javascript" charset="utf-8" src="js/jq.carousel.js"></script> 
@@ -45,8 +42,8 @@
 			$.ui.resetScrollers=false;
 			
 			var init = function(){
-			   $.ui.backButtonText="Back";  
-			   window.setTimeout(function(){$.ui.launch();},500);
+			   $.ui.backButtonText=" ";  
+			   window.setTimeout(function(){$.ui.launch();},10);
 			   $.ui.removeFooterMenu(); //This would remove the bottom nav menu
 			};
 			document.addEventListener("DOMContentLoaded",init,false);  
@@ -63,17 +60,16 @@
 			};
 			document.addEventListener("appMobi.device.ready",onDeviceReady,false); 
         </script>
-		<div id="jQUi">
+		<div id="jQUi" style="overflow:hidden;">
 			<!-- this is the header div -->
 			<div id="header">
 				<div class="width100">
 					<div class="fleft" style="width:87%;">
 						<div class="header-container-logo"><img class="width100" src="img/logo.png" /></div>
 					</div>
-					<div class="fleft" style="width:13%;"><a id='menubadge' onclick='jq.ui.toggleSideMenu()' style='margin:10px 40px 0 0;' class='menuButton fleft'></a></div>
+					<div class="fleft" style="width:13%;"><a id='menubadge' onclick='jq.ui.toggleSideMenu()' style='margin:8px 40px 40px 0;' class='menuButton fleft'></a></div>
 				</div>
 			</div>
-			
 			
 			<div id="content" style="overflow:hidden;">
 				<!-- here is where you can add your panels -->
@@ -81,89 +77,92 @@
 					<div class="color-brown-title size20 title-recette-mois tac">Les recettes du mois</div>
 					<div title="" class="" id="webcarousel"  style="overflow:visible; position: relative; top:-20px;">
 						<script>
-						 var carousel;
+							var carousel;
 							function init_carousel() {
-								carousel=$("#carousel").carousel({
-									pagingDiv: "carousel_dots",
-									pagingCssName: "carousel_paging2",
-									pagingCssNameSelected: "carousel_paging2_selected",
-									preventDefaults:false
+							carousel=$("#carousel").carousel({
+								pagingDiv: "carousel_dots",
+								pagingCssName: "carousel_paging2",
+								pagingCssNameSelected: "carousel_paging2_selected",
+								preventDefaults:false
 								});
 							}
 							window.addEventListener("load", init_carousel, false);
 						</script>
-						<div id="carousel_dots" style="text-align: center; margin:auto;  display : table; clear: both; position: relative; top: 300px; z-index: 200">
-						</div>
+						<div id="carousel_dots" style="text-align: center; margin:auto;  display : table; clear: both; position: relative; top: 300px; z-index: 200"></div>
 						<div class="width100">
-							
-						<div id="carousel" style="display:block;height:300px;width:100%; margin:auto">
-							<div class="tac">
-								<img style="max-width:300px;" src="img/exemple.png" />
-							</div>
-							<div class="tac">
-								<img style="max-width:300px;" src="img/exemple.png" />
-							</div>
-							<div class="tac">
-								<img style="max-width:300px;" src="img/exemple.png" />
-							</div>
-							<div class="tac">
-								<img style="max-width:300px;" src="img/exemple.png" />
-							</div>
-							<div class="tac">
-								<img style="max-width:300px;" src="img/exemple.png" />
-							</div>
-						</div>
-					</div>
-						
-					<div id="last-container" class="trame-light">
-						<div class="color-brown-title size20 title-recette-mois tac">Les recettes les plus populaires</div>
-						<div title="" class="" id="webcarousel"  style="overflow:visible; position: relative; top:10px;">
-							<script>
-							var tabNomRecette = new Array("recette0", "recette1", "recette2", "recette3","recette4");
-							var carousel;
-								function init_carousel() {
-									carousel=$("#carousel2").carousel({
-										pagingDiv: "carousel_dots2",
-										pagingCssName: "carousel_paging2",
-										pagingCssNameSelected: "carousel_paging2_selected",
-										preventDefaults:false,
-										pagingFunction:function(ind){
-											$("#nom-recette").html(tabNomRecette[ind]);
-										}
-									});
-								}
-								window.addEventListener("load", init_carousel, false);
-							</script>
-							<!--<div id="carousel_dots2" style="text-align: center; margin:auto;  display : table; clear: both; position: relative; top:150px; z-index: 200"></div>-->
-							<div class="width100">
-								<div id="carousel2" style="display:block;height:100px;width:195px; margin:auto">
-									<div class="tac">
-										<img style="max-width:178px;" src="img/exemple2.png" />
-									</div>
-									<div class="tac">
-										<img style="max-width:178px;" src="img/exemple2.png" />
-									</div>
-									<div class="tac">
-										<img style="max-width:178px;" src="img/exemple2.png" />
-									</div>
-									<div class="tac">
-										<img style="max-width:178px;" src="img/exemple2.png" />
-									</div>
-									<div class="tac">
-										<img style="max-width:178px;" src="img/exemple2.png" />
-									</div>
+							<div id="carousel" style="display:block;height:300px;width:100%; margin:auto">
+								<div class="tac">
+									<a href="#recette"><img style="max-width:300px;" src="img/exemple.png" /></a>
+								</div>
+								<div class="tac">
+									<a href="#recette"><img style="max-width:300px;" src="img/exemple.png" /></a>
+								</div>
+								<div class="tac">
+									<a href="#recette"><img style="max-width:300px;" src="img/exemple.png" /></a>
+								</div>
+								<div class="tac">
+									<a href="#recette"><img style="max-width:300px;" src="img/exemple.png" /></a>
+								</div>
+								<div class="tac">
+									<a href="#recette"><img style="max-width:300px;" src="img/exemple.png" /></a>
 								</div>
 							</div>
 						</div>
-						<div id="nom-recette" class="color-grey-title size14 title-recette-mois tac">Les recettes les plus populaires</div>
-						<div class="space20"></div>
-						<script>
-							$("#nom-recette").html(tabNomRecette[0]);
-						</script>
-					</div>
+						
+						<div id="last-container" class="trame-light">
+							<div class="color-brown-title size20 title-recette-mois tac">Les recettes les plus populaires</div>
+							<div title="" class="" id="webcarousel"  style="overflow:visible; position: relative; top:10px;">
+								<script>
+								var tabNomRecette = new Array("recette0", "recette1", "recette2", "recette3","recette4");
+								var carousel;
+									function init_carousel() {
+										carousel=$("#carousel2").carousel({
+											pagingDiv: "carousel_dots2",
+											pagingCssName: "carousel_paging2",
+											pagingCssNameSelected: "carousel_paging2_selected",
+											preventDefaults:false,
+											pagingFunction:function(ind){
+												$("#nom-recette").html(tabNomRecette[ind]);
+											}
+										});
+									}
+									window.addEventListener("load", init_carousel, false);
+									
+									function removeLogo() {
+										$(".header-container-logo").css("display", "none");
+									}
+								</script>
+								<!--<div id="carousel_dots2" style="text-align: center; margin:auto;  display : table; clear: both; position: relative; top:150px; z-index: 200"></div>-->
+								<div class="width100">
+									<div id="carousel2" style="display:block;height:100px;width:195px; margin:auto">
+										<div class="tac">
+											<a href="#recette" onclick="removeLogo()"><img style="max-width:178px;" src="img/exemple2.png" /></a>
+										</div>
+										<div class="tac">
+											<a href="#recette"><img style="max-width:178px;" src="img/exemple2.png" /></a>
+										</div>
+										<div class="tac">
+											<a href="#recette"><img style="max-width:178px;" src="img/exemple2.png" /></a>
+										</div>
+										<div class="tac">
+											<a href="#recette"><img style="max-width:178px;" src="img/exemple2.png" /></a>
+										</div>
+										<div class="tac">
+											<a href="#recette"><img style="max-width:178px;" src="img/exemple2.png" /></a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="nom-recette" class="color-grey-title size14 title-recette-mois tac">Les recettes les plus populaires</div>
+							<div class="space20"></div>
+							<script>
+								$("#nom-recette").html(tabNomRecette[0]);
+							</script>
+						</div>
+					</div> 
 				</div> 
 				
-				<div id="jqm1" class="panel"  title="" data-nav="menu_jqmobi">
+				<div id="recette" class="panel"  title="" data-nav="menu_jqmobi">
 					$("#div").removeClass() - removes a css class to the element.<br /><br />
 					<div style='border:1px solid black' id="jqm16_content" class="class16">This is some content</div><br />
 					<a class="button" href='javascript:;' onclick='($("#jqm16_content").removeClass("class16"))'>Remove the Class</a>
