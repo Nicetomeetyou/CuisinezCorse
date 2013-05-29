@@ -36,6 +36,7 @@
 		<script type="text/javascript" charset="utf-8" src="js/jq.shake.js"></script> 
 		<script type="text/javascript" charset="utf-8" src="js/jq.alphatable.js"></script> 
 		<script type="text/javascript" charset="utf-8" src="js/jq.template.js"></script> 
+
         <script type="text/javascript">
 			var webRoot="./";
 			$.ui.autoLaunch=false;
@@ -64,10 +65,10 @@
 			<!-- this is the header div -->
 			<div id="header">
 				<div class="width100">
-					<div class="fleft" style="width:87%;">
+					<div class="" style="width:87%;">
 						<div class="header-container-logo"><img class="width100" src="img/logo.png" /></div>
 					</div>
-					<div class="fleft" style="width:13%;"><a id='menubadge' onclick='jq.ui.toggleSideMenu()' style='margin:8px 40px 40px 0;' class='menuButton fleft'></a></div>
+					<div class="" style="width:13%;"><a id='menubadge' onclick='jq.ui.toggleSideMenu()' style='margin:8px 40px 40px 0;' class='menuButton fleft'></a></div>
 				</div>
 			</div>
 			
@@ -129,7 +130,7 @@
 									window.addEventListener("load", init_carousel, false);
 									
 									function removeLogo() {
-										$(".header-container-logo").css("display", "none");
+										$(".header-container-logo img").css("display", "none");
 									}
 								</script>
 								<!--<div id="carousel_dots2" style="text-align: center; margin:auto;  display : table; clear: both; position: relative; top:150px; z-index: 200"></div>-->
@@ -163,9 +164,26 @@
 				</div> 
 				
 				<div id="recette" class="panel" title="" data-nav="menu_jqmobi" scrolling="no">
-					$("#div").removeClass() - removes a css class to the element.<br /><br />
-					<div style='border:1px solid black' id="jqm16_content" class="class16">This is some content</div><br />
-					<a class="button" href='javascript:;' onclick='($("#jqm16_content").removeClass("class16"))'>Remove the Class</a>
+					<div class="recette-header">
+						<div style="width:33%" class="fleft">
+							<div class="ma">
+								<div class="fleft"><img src="img/recette-picto-temps.png" style="max-width:38px;" /></div>
+								<div class="fleft color-grey-title size14 ma">30 min</div>
+							</div>
+						</div>
+						<div style="width:33%" class="fleft">
+							<div class="ma">
+								<div class="fleft"><img src="img/recette-picto-personne.png" style="max-width:38px;" /></div>
+								<div class="fleft color-grey-title size14 fleft">8/10 pers.</div>
+							</div>
+						</div>
+						<div style="width:33%" class="fleft">
+							<div class="ma">
+								<div class="fleft"><img src="img/recette-picto-note.png" style="max-width:38px;" /></div>
+								<div class="fleft color-grey-title size14 fleft">3.96/5</div>
+							</div>
+						</div>
+					</div>
 				</div>
 				
 			</div>

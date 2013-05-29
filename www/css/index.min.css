@@ -20,4 +20,5 @@ body{background-attachment:fixed;font-family:Titillium-regular!important;font-si
 .carousel_content{-webkit-transform:translate3d(0,0,0);}
 .header-container-logo{margin:auto;max-width:215px;padding:14px 0 0 45px;}
 .title-recette-mois{padding:20px 0 5px 0;}
+.recette-header{width:100%;height:39px;background-color:#FFFFFF}
 /
