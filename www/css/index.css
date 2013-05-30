@@ -42,6 +42,7 @@ body {
 .fright { float:right; }
 .ma { margin:auto; }
 .tac { text-align:center; }
+.tal { text-align:left; }
 
 .color-brown-title { color:#8C5227; }
 .color-grey-title { color:#928B7F; }
@@ -62,7 +63,7 @@ body {
 /* ---------------------------------------------------- */
 
 /* HEADER --------------------------------------------- */
-.header-container-logo { margin:auto; max-width:215px; padding:14px 0 0 45px; }
+.header-container-logo { margin:auto; max-width:200px; padding:10px 0 0 45px; }
 /* ---------------------------------------------------- */
 
 /* HOME ----------------------------------------------- */

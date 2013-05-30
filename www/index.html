@@ -29,14 +29,9 @@
     </head>
     <body>
 		<script type="text/javascript" charset="utf-8" src="js/jq.ui.min.js"></script> 
-		<script type="text/javascript" charset="utf-8" src="js/jq.debug.js"></script> 
-		<script type="text/javascript" charset="utf-8" src="js/jq.swipe.js"></script> 
-		<script type="text/javascript" charset="utf-8" src="js/jq.carousel.js"></script> 
-		<script type="text/javascript" charset="utf-8" src="js/jq.drawer.js"></script> 
-		<script type="text/javascript" charset="utf-8" src="js/jq.shake.js"></script> 
-		<script type="text/javascript" charset="utf-8" src="js/jq.alphatable.js"></script> 
-		<script type="text/javascript" charset="utf-8" src="js/jq.template.js"></script> 
-
+		<script type="text/javascript" charset="utf-8" src="jq.mobi.min.js"></script> 
+		<script type="text/javascript" charset="utf-8" src="plugins/jq.carousel.js"></script> 
+		
         <script type="text/javascript">
 			var webRoot="./";
 			$.ui.autoLaunch=false;
@@ -77,23 +72,17 @@
 				<div title='' id="main" class="panel" selected="true" scrolling="no" >
 					<div class="color-brown-title size20 title-recette-mois tac">Les recettes du mois</div>
 					<div title="" class="" id="webcarousel"  style="overflow:hidden; position: relative; top:-20px;">
-						<script>
-							var carousel;
-							function init_carousel() {
-							carousel=$("#carousel").carousel({
-								pagingDiv: "carousel_dots",
-								pagingCssName: "carousel_paging2",
-								pagingCssNameSelected: "carousel_paging2_selected",
-								preventDefaults:false
-								});
-							}
-							window.addEventListener("load", init_carousel, false);
-						</script>
 						<div id="carousel_dots" style="text-align: center; margin:auto;  display : table; clear: both; position: relative; top: 300px; z-index: 200"></div>
 						<div class="width100">
 							<div id="carousel" style="display:block;height:300px;width:100%; margin:auto">
 								<div class="tac">
-									<a href="#recette"><img style="max-width:300px;" src="img/exemple.png" /></a>
+									<a class="" href="">
+										<img class="width100" src="img/img-recette.jpg">
+										<div class="space-before-text">
+											<div class="color-brown-title font-regular size20 tal">Titre recette</div>
+											<div class="color-grey-title font-regular size12 tal">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </div>
+										</div>
+									</a>
 								</div>
 								<div class="tac">
 									<a href="#recette"><img style="max-width:300px;" src="img/exemple.png" /></a>
@@ -108,19 +97,28 @@
 									<a href="#recette"><img style="max-width:300px;" src="img/exemple.png" /></a>
 								</div>
 							</div>
+							<script>
+								var carousel;
+								function init_carousel() {
+								carousel=$("#carousel").carousel({
+									pagingDiv: "carousel_dots",
+									pagingCssName: "carousel_paging2",
+									pagingCssNameSelected: "carousel_paging2_selected",
+									preventDefaults:true
+									});
+								}
+								window.addEventListener("load", init_carousel, false);
+							</script>
 						</div>
 						
 						<div id="last-container" class="trame-light">
 							<div class="color-brown-title size20 title-recette-mois tac">Les recettes les plus populaires</div>
 							<div title="" class="" id="webcarousel"  style="overflow:hidden; position: relative; top:10px;">
 								<script>
-								var tabNomRecette = new Array("recette0", "recette1", "recette2", "recette3","recette4");
-								var carousel;
+									var tabNomRecette = new Array("recette0", "recette1", "recette2", "recette3","recette4");
+									var carousel2;
 									function init_carousel() {
-										carousel=$("#carousel2").carousel({
-											pagingDiv: "carousel_dots2",
-											pagingCssName: "carousel_paging2",
-											pagingCssNameSelected: "carousel_paging2_selected",
+										carousel2=$("#carousel2").carousel({
 											preventDefaults:false,
 											pagingFunction:function(ind){
 												$("#nom-recette").html(tabNomRecette[ind]);
