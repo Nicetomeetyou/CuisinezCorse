@@ -63,7 +63,7 @@
 
 
                 // initial setup
-                this.container.style.overflow = "hidden";
+                //this.container.style.overflow = "hidden";
                 if (this.vertical) {
                     this.horizontal = false;
                 }
@@ -334,7 +334,7 @@
                     timingFunction = "linear";
                 el.style[$.feat.cssPrefix+"Transform"] = "translate" + translateOpen + distanceToMove.x + "px," + distanceToMove.y + "px" + translateClose;
                 el.style[$.feat.cssPrefix+"TransitionDuration"] = time + "ms";
-                el.style[$.feat.cssPrefix+"BackfaceVisibility"] = "hidden";
+               // el.style[$.feat.cssPrefix+"BackfaceVisibility"] = "hidden";
                 el.style[$.feat.cssPrefix+"TransformStyle"] = "preserve-3d";
                 el.style[$.feat.cssPrefix+"TransitionTimingFunction"] = timingFunction;
             },

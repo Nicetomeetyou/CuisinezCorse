@@ -380,9 +380,6 @@ font-size:48px;
 	-webkit-overflow-scrolling:touch;
 }
 
-
-
-
 #menu > * {
 	width:90%;
 	margin-left:auto;
@@ -833,10 +830,6 @@ input.jq-ui-slider[type=checkbox]:focus:disabled + label,
 input.jq-ui-slider[type=radio]:disabled + label,
 input.jq-ui-slider[type=radio]:focus:disabled + label
 { background-position:0 0; opacity:.7 !important; }
-	
-
-    
-    
 
 select[disabled]~div {
 	opacity:.7;
@@ -886,8 +879,11 @@ select[disabled]~div {
 }
 
 .menuButton {
-		position:relative;
-		width:35px;	height:20px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width:35px;	
+		height:20px;
 		padding:9px 4px;
 		background-color:transparent;
 		display:inline-block;

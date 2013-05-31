@@ -3,6 +3,7 @@
 @font-face{font-family:Titillium-medium;src:url("../font/TitilliumText22L004.otf");}
 body{background-attachment:fixed;font-family:Titillium-regular!important;font-size:12px;height:100%;margin:0px;padding:0px;width:100%;}
 .width100{width:100%;}
+.width300px{max-width:300px;}
 .fleft{float:left;}
 .fright{float:right;}
 .ma{margin:auto;}
@@ -12,6 +13,7 @@ body{background-attachment:fixed;font-family:Titillium-regular!important;font-si
 .color-grey-title{color:#928B7F;}
 .size20{font-size:20px;text-shadow:0px 2px rgba(0,0,0,.1);}
 .size14{font-size:14px;text-shadow:0px 2px rgba(0,0,0,.1);}
+.space10{height:10px;}
 .space20{height:20px;}
 .trame-light{background:url(../img/trame-light.jpg) repeat 0 0;width:100%;height:500px;}
 .trame-dark{background:url(../img/trame-dark.jpg) repeat 0 0;width:100%;}
@@ -19,7 +21,8 @@ body{background-attachment:fixed;font-family:Titillium-regular!important;font-si
 .carousel_paging2_selected{border-radius:10px;background:#8C5429;width:10px;height:10px;display:inline-block;-webkit-box-shadow:0px 2px 0px rgba(255,255,255,0.8);box-shadow:0px 2px 0px rgba(255,255,255,0.8);}
 .spacer{width:10px;float:left;}
 .carousel_content{-webkit-transform:translate3d(0,0,0);}
-.header-container-logo{margin:auto;max-width:200px;padding:10px 0 0 45px;}
+.header-container-logo{margin:auto;max-width:170px;padding:14px 0;}
 .title-recette-mois{padding:20px 0 5px 0;}
+.space-before-text{margin:0 5px;}
 .recette-header{width:100%;height:39px;background-color:#FFFFFF}
 /

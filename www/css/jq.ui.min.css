@@ -110,7 +110,7 @@ select[disabled]~div{opacity:.7;}
 #menu.to-on{-webkit-transition:-webkit-transform 150ms;-webkit-transform:translate3d(0px,0px,0px);transition:transform 150ms;transform:translate(0px,0px);}
 #menu.to-off{-webkit-transition:-webkit-transform 150ms;transition:transform 150ms;}
 #menu,#menu.off,#menu.to-off{-webkit-transform:translate3d(-200px,0px,0px);transform:translate(-200px,0px);}
-.menuButton{position:relative;width:35px;height:20px;padding:9px 4px;background-color:transparent;display:inline-block;}
+.menuButton{position:absolute;right:0;top:0;width:35px;height:20px;padding:9px 4px;background-color:transparent;display:inline-block;}
 .menuButton:before{content:'';position:absolute;width:70%;height:4px;border-radius:20px;background:#52321E;box-shadow:0 8px 0 #52321E;-webkit-box-shadow:0 8px 0 #52321E;}
 .menuButton:after{content:'';position:absolute;top:25px;width:70%;height:4px;border-radius:20px;background:#52321E;}
 @media handheld,only screen and (min-width:768px){.hasMenu,.hasMenu.on{position:absolute!important;left:256px!important;-webkit-transition:all 0ms!important;-webkit-transform:translate3d(0,0,0);transform:translate(0,0,0);}
