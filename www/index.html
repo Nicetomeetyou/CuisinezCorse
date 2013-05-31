@@ -28,11 +28,11 @@
         <title>CuisinezCorse</title>
     </head>
     <body>
+		<script type="text/javascript" charset="utf-8" src="js/fastclick.js"></script> 
 		<script type="text/javascript" charset="utf-8" src="js/jq.ui.min.js"></script> 
 		<script type="text/javascript" charset="utf-8" src="js/jq.mobi.min.js"></script> 
 		<script type="text/javascript" charset="utf-8" src="plugins/jq.carousel.js"></script> 
 		<script type="text/javascript" charset="utf-8" src="phonegap.js"></script> 
-		
         <script type="text/javascript">
 			var webRoot="./";
 			$.ui.autoLaunch=false;
@@ -56,6 +56,10 @@
 				
 			};
 			document.addEventListener("appMobi.device.ready",onDeviceReady,false); 
+			
+			window.addEventListener('load', function () {
+				new FastClick(document.body);
+			}, false);
         </script>
 		<div id="jQUi" style="overflow:hidden;">
 			<!-- this is the header div -->
