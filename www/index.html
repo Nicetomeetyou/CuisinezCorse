@@ -1,79 +1,202 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
+<!--HTML5 doctype-->
 <html>
+
     <head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<meta http-equiv="Access-Control-Allow-Origin" content="*">
-       <!-- <meta name="format-detection" content="telephone=yes" />-->
-		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-		<link rel="stylesheet" type="text/css" href="css/jq.ui.css" title="default" />
-        <title>CuisinezCorse</title>
-    </head>
-    <body>
-		<script type="text/javascript" charset="utf-8" src="js/fastclick.js"></script> 
-		<script type="text/javascript" charset="utf-8" src="js/jq.ui.min.js"></script> 
-		<script type="text/javascript" charset="utf-8" src="js/jq.mobi.min.js"></script> 
-		<script type="text/javascript" charset="utf-8" src="plugins/jq.carousel.js"></script> 
-		<script type="text/javascript" charset="utf-8" src="phonegap.js"></script> 
-        <script type="text/javascript">
-			var webRoot="./";
-			$.ui.autoLaunch=false;
-			$.ui.resetScrollers=false;
+        <title>Cuisnez-Corses</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+        <link rel="stylesheet" type="text/css" href="css/index.css" />    
+		<!--   
+		<link rel="stylesheet" type="text/css" href="css/af.ui.css" title="default" />
+		-->
+		<link rel="stylesheet" type="text/css" href="css/src/main.css"  />
+		<link rel="stylesheet" type="text/css" href="css/src/appframework.css"  />
+		<link rel="stylesheet" type="text/css" href="css/src/android.css"  />
+		<link rel="stylesheet" type="text/css" href="css/src/win8.css"  />
+		<link rel="stylesheet" type="text/css" href="css/src/bb.css"  />
+		<link rel="stylesheet" type="text/css" href="css/src/ios.css"  />
+		<link rel="stylesheet" type="text/css" href="css/src/ios7.css"  />
+		
+		<link rel="stylesheet" type="text/css" href="css/src/badges.css"  />
+		<link rel="stylesheet" type="text/css" href="css/src/buttons.css"  />
+		<link rel="stylesheet" type="text/css" href="css/src/lists.css"  />
+		<link rel="stylesheet" type="text/css" href="css/src/forms.css"  />
+		<link rel="stylesheet" type="text/css" href="css/src/grid.css"  />
+		
+		<link rel="stylesheet" type="text/css" href="plugins/css/af.actionsheet.css"  />
+		<link rel="stylesheet" type="text/css" href="plugins/css/af.popup.css"  />
+		<link rel="stylesheet" type="text/css" href="plugins/css/af.selectBox.css"  />
+		
+		<!-- uncomment for AppMobi apps <script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/appmobi.js"></script>
+			<script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/xhr.js"></script>
+		-->
+        <script type="text/javascript" charset="utf-8" src="./appframework.js"></script>
+        <!-- include af.desktopBrowsers.js on desktop browsers only -->
+        <script>
+            function loadedPanel(what) {
+                //We are going to set the badge as the number of li elements inside the target
+                $.ui.updateBadge("#aflink", $("#af").find("li").length);
+            }
 			
-			var init = function(){
-			   $.ui.backButtonText=" ";  
-			   window.setTimeout(function(){$.ui.launch();},10);
-			   $.ui.removeFooterMenu(); //This would remove the bottom nav menu
-			};
-			document.addEventListener("DOMContentLoaded",init,false);  
-			$.ui.ready(function(){});
-		   
-			/* This code is used to run as soon as appMobi activates */
-			var onDeviceReady=function(){
-				AppMobi.device.setRotateOrientation("portrait");
-				AppMobi.device.setAutoRotate(false);
-				webRoot=AppMobi.webRoot+"/";
-				//hide splash screen
-				AppMobi.device.hideSplashScreen();	
-				
-			};
-			document.addEventListener("appMobi.device.ready",onDeviceReady,false); 
+            function unloadedPanel(what) {
+                console.log("unloaded " + what.id);
+            }
 			
-			window.addEventListener('load', function () {
-				new FastClick(document.body);
-			}, false);
+            if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchstart' in window)) {
+                var script = document.createElement("script");
+                script.src = "plugins/af.desktopBrowsers.js";
+                var tag = $("head").append(script);
+            }
         </script>
-		<div id="jQUi" style="overflow:hidden;">
-			<!-- this is the header div -->
-			<div id="header">
+		
+        <script type="text/javascript" charset="utf-8" src="plugins/af.actionsheet.js"></script>
+        <script type="text/javascript" charset="utf-8" src="plugins/af.css3animate.js"></script>
+        <script type="text/javascript" charset="utf-8" src="plugins/af.passwordBox.js"></script>
+        <script type="text/javascript" charset="utf-8" src="plugins/af.scroller.js"></script>
+        <script type="text/javascript" charset="utf-8" src="plugins/af.selectBox.js"></script>
+        <script type="text/javascript" charset="utf-8" src="plugins/af.touchEvents.js"></script>
+        <script type="text/javascript" charset="utf-8" src="plugins/af.touchLayer.js"></script>
+        <script type="text/javascript" charset="utf-8" src="plugins/af.popup.js"></script>
+        <script type="text/javascript" charset="utf-8" src="plugins/af.carousel.js"></script>
+
+        <script type="text/javascript" charset="utf-8" src="ui/src/appframework.ui.js"></script>
+        <script type="text/javascript" charset="utf-8" src="ui/transitions/all.js"></script>
+        <script type="text/javascript" charset="utf-8" src="plugins/af.slidemenu.js"></script>
+
+        <script type="text/javascript">
+            /* This function runs once the page is loaded, but appMobi is not yet active */
+            //$.ui.animateHeaders=false;
+            var search=document.location.search.toLowerCase().replace("?","");
+             //if(!search)
+                //$.os.useOSThemes=false;
+                
+            if(search) //Android fix has too many buggy issues on iOS - can't preview with $.os.android
+            {
+               $.os.useOSThemes=true;
+                if(search=="win8")
+                    $.os.ie=true;
+                $.ui.ready(function(){
+                    $("#afui").get(0).className=search;
+                });
+            }
+            
+            var webRoot = "./";
+            // $.os.android=true;
+            $.ui.autoLaunch = true;
+            
+			$.ui.removeFooterMenu();
+            //$.ui.resetScrollers=false;
+            
+            $(document).ready(function(){
+                $.ui.launch();
+            });
+            
+            /* This code is used to run as soon as appMobi activates */
+            var onDeviceReady = function () {
+                AppMobi.device.setRotateOrientation("portrait");
+                AppMobi.device.setAutoRotate(false);
+                webRoot = AppMobi.webRoot + "";
+                //hide splash screen
+                AppMobi.device.hideSplashScreen();
+                $.ui.blockPageScroll(); //block the page from scrolling at the header/footer
+				
+				console.log('Device ready');
+				//doJSON();
+            };
+            document.addEventListener("appMobi.device.ready", onDeviceReady, false);
+			
+            function showHide(obj, objToHide) {
+                var el = $("#" + objToHide)[0];
+                if (obj.className == "expanded") {
+                    obj.className = "collapsed";
+                } else {
+                    obj.className = "expanded";
+                }
+                $(el).toggle();
+            }
+			
+            if($.os.android||$.os.ie||search=="android"){
+                $.ui.ready(function(){
+                    $("#main .list").append("<li><a id='toggleAndroidTheme'>Toggle Theme Color</a></li>");
+                    var $el=$("#afui");
+                    $("#toggleAndroidTheme").bind("click",function(e){
+                        if($el.hasClass("light"))
+                            $el.removeClass("light");
+                        else
+                            $el.addClass("light");
+                    });
+                });
+            }
+			
+			function doJSON() {
+				console.log('Get JSON');
+				$.getJSON(webRoot + '/json/recette.html', function (data) {
+					//console.log(JSON.stringify(data))
+				});
+			}
+			
+			doJSON();
+			
+			var openMenu = false;
+			
+			$(function() {
+				$("#menu").css("width", window.innerWidth - 50 + "px");
+			});
+			
+			function menu() {
+				if(!openMenu) { 
+					$("#afui").css("z-index", "250");
+					$("#afui").css3Animate({x: -window.innerWidth + 50 + "px", time: "150ms", callback: function () { } }); 
+					//$("#menu").css3Animate({x: -window.innerWidth + 50 + "px", time: "150ms", callback: function () { } }); 
+					openMenu = true; 
+					$.ui.setBackButtonVisibility(false);
+				} else { 
+					$("#afui").css3Animate({x: "0px", time: "150ms", callback: function () { } }); 
+					//$("#menu").css3Animate({x: "0px", time: "150ms", callback: function () { } }); 
+					openMenu = false; 
+					if($("#main").css("display") == "none") { $.ui.setBackButtonVisibility(true); } 
+				}
+			}
+			
+			function menu_accueil() {
+				$("#afui").css3Animate({x: "0px", time: "150ms", callback: function () { } }); 
+				//$("#menu").css3Animate({x: "0px", time: "150ms", callback: function () { } }); 
+				setTimeout(function(){$.ui.setBackButtonVisibility(false);},1);
+			}
+			
+			
+        </script>
+	</head>
+
+    <body>
+        <div id="afui" class="fleft">
+            <!-- this is the splashscreen you see. -->
+            <div id="splashscreen" class='ui-loader heavy'>
+                App Framework
+                <br>
+                <br>	<span class='ui-icon ui-icon-loading spin'></span>
+                <h1>Starting app</h1>
+            </div>
+			
+            <div id="header">
 				<div class="width100">
-					<div class="">
-						<div class="header-container-logo"><img class="width100" src="img/logo.png" /></div>
+					<div class="width100">
+						<div class="header-container-logo">
+							<img class="width100" src="img/logo.png" />
+						</div>
+						<div class="header-container-bt-menu">
+							<a id='menubadge' onclick='menu()' style='' class='menuButton fleft'></a>
+						</div>
 					</div>
-					<div class="" style="width:13%;"><a id='menubadge' onclick='jq.ui.toggleSideMenu()' style='margin:7px 0;' class='menuButton fleft'></a></div>
 				</div>
-			</div>
+			</div>			
 			
 			<div id="content" style="overflow:hidden;">
-				<div title='' id="main" class="panel" selected="true">
+				<!--  INDEX  -->
+				<div id="main" class="panel trame-dark">
 					<div class="color-brown-title size20 title-recette-mois tac">Les recettes du mois</div>
 					<div title="" class="" id="webcarousel"  style="overflow:hidden; position: relative; top:-20px;">
 						<div id="carousel_dots" style="text-align: center; margin:auto;  display : table; clear: both; position: relative; top: 300px; z-index: 200"></div>
@@ -192,43 +315,188 @@
 					</div> 
 				</div> 
 				
-				<div id="recette" class="panel" title="" data-nav="menu_jqmobi" scrolling="no">
+				<!--  RECETTE  -->
+				<div id="recette" class="panel">
 					<div class="recette-header">
 						<div style="width:33%" class="fleft">
 							<div class="ma">
 								<div class="fleft"><img src="img/recette-picto-temps.png" style="max-width:38px;" /></div>
-								<div class="fleft color-grey-title size14 ma">30 min</div>
+								<div class="fleft color-grey-title size14 ma title-cat">30 min</div>
 							</div>
 						</div>
 						<div style="width:33%" class="fleft">
 							<div class="ma">
 								<div class="fleft"><img src="img/recette-picto-personne.png" style="max-width:38px;" /></div>
-								<div class="fleft color-grey-title size14 fleft">8/10 pers.</div>
+								<div class="fleft color-grey-title size14 fleft title-cat">8/10 pers.</div>
 							</div>
 						</div>
 						<div style="width:33%" class="fleft">
 							<div class="ma">
 								<div class="fleft"><img src="img/recette-picto-note.png" style="max-width:38px;" /></div>
-								<div class="fleft color-grey-title size14 fleft">3.96/5</div>
+								<div class="fleft color-grey-title size14 fleft title-cat">3.96/5</div>
+							</div>
+						</div>
+					</div>
+					<img class="width100" src="img/img-recette.jpg">
+					<div class="tabs"> 
+						<a href="#" class="fleft onglet-recette" style="width:33%;">
+							<div><img class="width100" src="img/onglet-actif.png" /></div>
+							<div><img class="width100" style="display:none;" src="img/onglet-attente.png" /></div>
+						</a>
+						<a href="#" class="fleft onglet-recette" style="width:33%;">
+							<div><img class="width100" style="display:none;" src="img/onglet-actif.png" /></div>
+							<div><img class="width100" src="img/onglet-attente.png" /></div>
+						</a>
+						<a href="#" class="fright onglet-recette" style="width:33%;">
+							<div><img class="width100" style="display:none;" src="img/onglet-actif.png" /></div>
+							<div><img class="width100" src="img/onglet-attente.png" /></div>
+						</a>
+					</div>
+					<div class="clearfix"></div>
+					<div class="swiper-container swiper-tabs">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<div class="content-slide2">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia vulputate hendrerit. Suspendisse potenti. Etiam rutrum egestas massa, ut facilisis magna tristique nec. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc interdum tempus turpis ut tempus. Mauris dictum blandit lectus, a dictum erat dictum non. Etiam ultrices convallis interdum. Curabitur varius auctor enim, quis dictum nibh fringilla ut. Sed vel lacus ac odio molestie sodales quis sit amet lacus. Curabitur id porta eros. Fusce in varius nisi.
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="content-slide2">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia vulputate hendrerit. Suspendisse potenti. Etiam rutrum egestas massa, ut facilisis magna tristique nec. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc interdum tempus turpis ut tempus. Mauris dictum blandit lectus, a dictum erat dictum non. Etiam ultrices convallis interdum. Curabitur varius auctor enim, quis dictum nibh fringilla ut. Sed vel lacus ac odio molestie sodales quis sit amet lacus. Curabitur id porta eros. Fusce in varius nisi.
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="content-slide2">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia vulputate hendrerit. Suspendisse potenti. Etiam rutrum egestas massa, ut facilisis magna tristique nec. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc interdum tempus turpis ut tempus. Mauris dictum blandit lectus, a dictum erat dictum non. Etiam ultrices convallis interdum. Curabitur varius auctor enim, quis dictum nibh fringilla ut. Sed vel lacus ac odio molestie sodales quis sit amet lacus. Curabitur id porta eros. Fusce in varius nisi.
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				
 			</div>
 			
 			<!-- bottom navbar.  Add additional tabs here -->
 			<!--<div id="navbar">
 				<a href="#main" id='navbar_home' class='icon home' >home</a>
 			</div>-->
-			
-			<!-- this is the default left side nav menu -->
-			<nav>
-				<div class='title'>Home</div>
-					<ul>
-						<li class="icon home mini"></li>
-					</ul>
-			</nav>
+		</div>
+		
+		<div id="menu" class="fleft">
+			<div class="back-input">
+				<input class="input-search" />
+			</div>
+			<a href="#main" onclick="menu_accueil()">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon1.png" />
+					<div class="fleft text-short-menu black font-din">Accueil</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a href="#recette" onclick="menu()">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon2.png" />
+					<div class="fleft text-short-menu black font-din">Gastronomie Corse</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a href="#recette" onclick="menu()">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon3.png" />
+					<div class="fleft text-short-menu black font-din">Recettes favorites</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<div class="back-inter-menu">
+				<div class="fleft text-short-menu black font-din">RECETTES PAR CATÉGORIES</div>
+			</div>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a href="#recette" onclick="menu()">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon4.png" />
+					<div class="fleft text-short-menu black font-din">Salades</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a href="#recette" onclick="menu()">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon5.png" />
+					<div class="fleft text-short-menu black font-din">Viandes</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a href="#recette" onclick="menu()">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon6.png" />
+					<div class="fleft text-short-menu black font-din">Poissons</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a href="#recette" onclick="menu()">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon7.png" />
+					<div class="fleft text-short-menu black font-din">Fromages</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a href="#recette" onclick="menu()">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon8.png" />
+					<div class="fleft text-short-menu black font-din">Légumes</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a href="#recette" onclick="menu()">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon9.png" />
+					<div class="fleft text-short-menu black font-din">Fruits</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a href="#recette" onclick="menu()">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon10.png" />
+					<div class="fleft text-short-menu black font-din">Dessert</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a href="#recette" onclick="menu()">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon11.png" />
+					<div class="fleft text-short-menu black font-din">Boissons</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<div class="back-inter-menu">
+				<div class="fleft text-short-menu black font-din">A PROPOS</div>
+			</div>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a href="#recette" onclick="menu()">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon12.png" />
+					<div class="fleft text-short-menu black font-din">Crédits</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a href="#recette" onclick="menu()">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon13.png" />
+					<div class="fleft text-short-menu black font-din">Mentions légales</div>
+				</div>
+			</a>
 		</div>
     </body>
 </html>
