@@ -8,7 +8,7 @@ body{overflow-x:hidden;-webkit-text-size-adjust:none;font-family:'Helvetica Neue
 #afui #modalContainer>*{-webkit-backface-visibility:hidden;-webkit-perspective:1000;}
 #afui .afmScrollbar{background:white!important;}
 #afui .afmScrollPanel{width:100%;min-height:100%;overflow:hidden;}
-#afui{position:absolute;width:100%;top:0;bottom:0;overflow:hidden;z-index:500;}
+#afui{position:absolute;width:100%;top:0;bottom:0;overflow:hidden;z-index:500;box-shadow:0 0 24px rgba(0,0,0,0.8);}
 #afui>#splashscreen{position:absolute;top:0;bottom:0;width:100%;left:0;min-height:100%;background:rgba(29,29,28,1)!important;color:white!important;font-size:30px;text-align:center;z-index:9999;display:block;margin-left:auto!important;margin-right:auto!important;padding-top:80px!important;}
 #afui>#header{position:absolute;overflow:hidden;display:block;z-index:250;-webkit-box-sizing:border-box;box-sizing:border-box;height:50px;left:0;right:0;box-shadow:0 0 24px rgba(0,0,0,0.8);}
 #afui #header h1{position:absolute;width:45%;z-index:1;text-align:center;height:44px;font-size:18px;font-weight:bold;left:27.5%;color:#fff;padding:10px 0;text-shadow:rgba(0,0,0,0.8) 0 -1px 0;text-align:center;white-space:nowrap;}
