@@ -75,7 +75,7 @@ body {
 .back-menu:hover { background-color:#20130B; }
 .menu-line-bottom { border-bottom:1px solid #301D11; }
 .menu-line-up { border-bottom:1px solid #462F21; }
-.max-width-icon { width:50px; }
+.max-width-icon { width:50px; margin-left: 15px; }
 .text-short-menu { margin:16px; color:white !important; font-size:15px; }
 .input-search { width:90%; height:50%; margin:10px 0 10px 15px }
 .back-input { background-color:#20130B; height:50px; margin-left:2px;}
