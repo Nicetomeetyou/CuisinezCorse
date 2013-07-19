@@ -551,14 +551,14 @@
 
             var that = this;
             var menu = $.query("#menu");
-            var els = $.query("#content,  #header, #navbar");
+            var els = $.query("#afui");
             time = time || this.transitionTime;
             var open = this.isSideMenuOn();
 
             if (force === 2 || (!open && ((force !== undefined && force !== false) || force === undefined))) {
                 this.togglingSideMenu = true;
                 menu.show();
-                that.css3animate(els, {
+                /*that.css3animate(els, {
                     x: that.sideMenuWidth,
                     time: time,
                     complete: function(canceled) {
@@ -566,11 +566,23 @@
                         els.vendorCss("Transition", "");
                         if (callback) callback(canceled);
                     }
-                });
+                });*/
+				$("#content").css("z-index", "250");
+				$("#content").css3Animate({x: -window.innerWidth + 50 + "px", time: "150ms", complete: function(canceled) {
+                        that.togglingSideMenu = false;
+                        els.vendorCss("Transition", "");
+                        if (callback) callback(canceled);
+                    } }); 
+				$("#header").css("z-index", "250");
+				$("#header").css3Animate({x: -window.innerWidth + 50 + "px", time: "150ms", complete: function(canceled) {
+                        that.togglingSideMenu = false;
+                        els.vendorCss("Transition", "");
+                        if (callback) callback(canceled);
+                    } }); 
 
             } else if (force === undefined || (force !== undefined && force === false)) {
                 this.togglingSideMenu = true;
-                that.css3animate(els, {
+               /* that.css3animate(els, {
                     x: "0px",
                     time: time,
                     complete: function(canceled) {
@@ -581,7 +593,24 @@
                         if (callback) callback(canceled);
                         menu.hide();
                     }
-                });
+                });*/
+				$("#content").css3Animate({x: "0px", time: "150ms", complete: function(canceled) {
+                        // els.removeClass("on");
+                        els.vendorCss("Transition", "");
+                        els.vendorCss("Transform", "");
+                        that.togglingSideMenu = false;
+                        if (callback) callback(canceled);
+                        menu.hide();
+                    } }); 
+					
+					$("#header").css3Animate({x: "0px", time: "150ms", complete: function(canceled) {
+                        // els.removeClass("on");
+                        els.vendorCss("Transition", "");
+                        els.vendorCss("Transform", "");
+                        that.togglingSideMenu = false;
+                        if (callback) callback(canceled);
+                        menu.hide();
+                    } }); 
             }
         },
         /**

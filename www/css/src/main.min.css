@@ -23,7 +23,7 @@ body{overflow-x:hidden;-webkit-text-size-adjust:none;font-family:'Helvetica Neue
 #afui #navbar .icon.pressed:before{}
 #afui footer,#afui header,#afui nav{display:none;}
 #afui #navbar footer,#afui #menu nav,#afui #header header{display:block;}
-#afui>#menu.tabletMenu{z-index:1;width:100%;bottom:0;height:100%;display:block!important;position:absolute;top:40px;right:-500px;z-index:249;}
+#afui>#menu.tabletMenu{z-index:1;width:100%;bottom:0;height:100%;display:block!important;position:absolute;z-index:0;}
 #menu{z-index:0;position:relative;height:100%;right:-48px;}
 #afui #menu_scroller{padding-bottom:10px;overflow-y:auto;overflow-x:hidden;-webkit-backface-visibility:hidden;-webkit-overflow-scrolling:touch;}
 #afui #menu_scroller>*{-webkit-backface-visibility:hidden;-webkit-perspective:1000;}

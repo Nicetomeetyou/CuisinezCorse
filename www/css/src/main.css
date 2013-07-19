@@ -240,8 +240,8 @@ body {
 	bottom:0;
 	height:100%;
 	display:block !important;
-	position:absolute; top:40px; right:-500px;
-	z-index:249;
+	position:absolute;
+	z-index:0;
 }
 
 #menu {

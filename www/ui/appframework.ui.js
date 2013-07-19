@@ -3697,7 +3697,7 @@
         toggleSideMenu: function(force, callback, time) {
             if (!this.isSideMenuEnabled() || this.togglingSideMenu) return;
 
-            var that = this;
+            /*var that = this;
             var menu = $.query("#menu");
             var els = $.query("#content,  #header, #navbar");
             time = time || this.transitionTime;
@@ -3730,7 +3730,11 @@
                         menu.hide();
                     }
                 });
-            }
+            }*/
+			
+			$("#afui").css("z-index", "250");
+			$("#afui").css3Animate({x: -window.innerWidth + 50 + "px", time: "150ms", callback: function () { } }); 
+			
         },
         /**
          * Disables the side menu
