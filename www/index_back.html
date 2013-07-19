@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<!--HTML5 doctype-->
+<html>
+
+    <head>
+        <title>Cuisnez-Corses</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+        <link rel="stylesheet" type="text/css" href="css/index.css" />    
+		<!--   
+		<link rel="stylesheet" type="text/css" href="css/af.ui.css" title="default" />
+		-->
+		<link rel="stylesheet" type="text/css" href="css/src/main.css"  />
+		<link rel="stylesheet" type="text/css" href="css/src/appframework.css"  />
+		
+		<link rel="stylesheet" type="text/css" href="css/src/badges.css"  />
+		<link rel="stylesheet" type="text/css" href="css/src/buttons.css"  />
+		<link rel="stylesheet" type="text/css" href="css/src/lists.css"  />
+		<link rel="stylesheet" type="text/css" href="css/src/forms.css"  />
+		<link rel="stylesheet" type="text/css" href="css/src/grid.css"  />
+		
+		<link rel="stylesheet" type="text/css" href="plugins/css/af.actionsheet.css"  />
+		<link rel="stylesheet" type="text/css" href="plugins/css/af.popup.css"  />
+		<link rel="stylesheet" type="text/css" href="plugins/css/af.selectBox.css"  />
+		
+		<!-- uncomment for AppMobi apps <script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/appmobi.js"></script>
+			<script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/xhr.js"></script>
+		-->
+        <script type="text/javascript" charset="utf-8" src="./appframework.js"></script>
+        <!-- include af.desktopBrowsers.js on desktop browsers only -->
+        <script>
+            function loadedPanel(what) { $.ui.updateBadge("#aflink", $("#af").find("li").length); }
+            function unloadedPanel(what) { console.log("unloaded " + what.id); }
+			
+            if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchstart' in window)) {
+                var script = document.createElement("script");
+                script.src = "plugins/af.desktopBrowsers.js";
+                var tag = $("head").append(script);
+            }
+        </script>
+		
+        <script type="text/javascript" charset="utf-8" src="plugins/af.actionsheet.js"></script>
+        <script type="text/javascript" charset="utf-8" src="plugins/af.css3animate.js"></script>
+        <script type="text/javascript" charset="utf-8" src="plugins/af.passwordBox.js"></script>
+        <script type="text/javascript" charset="utf-8" src="plugins/af.scroller.js"></script>
+        <script type="text/javascript" charset="utf-8" src="plugins/af.selectBox.js"></script>
+        <script type="text/javascript" charset="utf-8" src="plugins/af.touchEvents.js"></script>
+        <script type="text/javascript" charset="utf-8" src="plugins/af.touchLayer.js"></script>
+        <script type="text/javascript" charset="utf-8" src="plugins/af.popup.js"></script>
+        <script type="text/javascript" charset="utf-8" src="plugins/af.carousel.js"></script>
+
+        <script type="text/javascript" charset="utf-8" src="ui/src/appframework.ui.js"></script>
+        <script type="text/javascript" charset="utf-8" src="ui/transitions/all.js"></script>
+        <script type="text/javascript" charset="utf-8" src="plugins/af.slidemenu.js"></script>
+
+        <script type="text/javascript">
+            $.ui.animateHeaders=false;
+            var search=document.location.search.toLowerCase().replace("?","");
+            $.os.useOSThemes=false;
+            
+            if(search) {
+               $.os.useOSThemes=true;
+                if(search=="win8")
+                    $.os.ie=true;
+                $.ui.ready(function(){
+                    $("#afui").get(0).className=search;
+                });
+            }
+            
+             var webRoot = "./";
+            // $.os.android=true;
+            $.ui.autoLaunch = true;
+            $.ui.openLinksNewTab = false;
+			$.ui.removeFooterMenu();
+            //$.ui.resetScrollers=false;
+            
+			$.ui.launch();
+			$.ui.disableNativeScrolling();
+			$.ui.disableSideMenu();
+			$.ui.backButtonText="Retour";
+			$.feat.nativeTouchScroll=false;
+            
+            $(document).ready(function(){
+                $.ui.launch();
+            });
+            
+            /* This code is used to run as soon as appMobi activates */
+            var onDeviceReady = function () {
+                AppMobi.device.setRotateOrientation("portrait");
+                AppMobi.device.setAutoRotate(false);
+                webRoot = AppMobi.webRoot + "";
+                //hide splash screen
+                AppMobi.device.hideSplashScreen();
+                $.ui.blockPageScroll(); //block the page from scrolling at the header/footer
+				
+				console.log('Device ready');
+				//doJSON();
+            };
+            document.addEventListener("appMobi.device.ready", onDeviceReady, false);
+			
+            function showHide(obj, objToHide) {
+                var el = $("#" + objToHide)[0];
+                if (obj.className == "expanded") {
+                    obj.className = "collapsed";
+                } else {
+                    obj.className = "expanded";
+                }
+                $(el).toggle();
+            }
+			
+            if($.os.android||$.os.ie||search=="android"){
+                $.ui.ready(function(){
+                    $("#main .list").append("<li><a id='toggleAndroidTheme'>Toggle Theme Color</a></li>");
+                    var $el=$("#afui");
+                    $("#toggleAndroidTheme").bind("click",function(e){
+                        if($el.hasClass("light"))
+                            $el.removeClass("light");
+                        else
+                            $el.addClass("light");
+                    });
+                });
+            }
+			
+			var listRecette;
+			
+			function doJSON() {
+				console.log('Get JSON');
+				$.getJSON(webRoot + '/json/recette.html', function (data) {
+					listRecette = data;
+				});
+			}
+			
+			var tabRecette;
+			
+			function getListMenu(pNum) {
+				tabRecette = new Array();
+				var key, count = 0, str="";
+				for(var key in listRecette.recette) {
+					if (listRecette.recette.hasOwnProperty(key)) {
+						if(listRecette.recette[key].categorie == pNum){
+							str += 	'<div>';
+							str +=		'<div class="photo-list">';
+							str +=			'<img class="width100 align-middle" src="img/img-recette.jpg" />';
+							str +=		'</div>';
+							str +=		'<div class="tac">';
+							str +=			'<img class="arrow-up" src="img/arrow-up.png" />';
+							str +=		'</div>';
+							str +=		'<div class="text-list">';
+							str +=			'<div class="size20 color-brown-title">'+listRecette.recette[key].title+'</div>';
+							str +=				'<div>'+listRecette.recette[key].description+'</div>';
+							str +=			'</div>';
+							str +=		'</div>';
+							str +=	'</div>';
+						}
+					}
+				}
+				
+				$.ui.loadContent("liste-recette",false,false,"none");
+				$("#liste-recette").html(str);
+				menu();
+			}
+			
+			doJSON();
+			
+			var openMenu = false;
+			$(function() { $("#menu-custom").css("width", window.innerWidth - 50 + "px !important"); });
+			
+			function menu() {
+				if(!openMenu) { 
+					openMenu = true; 
+					//$.ui.toggleSideMenu(true)
+					$("#content").css3Animate({x: -window.innerWidth + 50 + "px", time: "150ms", complete: function(canceled) { } }); 
+					$("#header").css3Animate({x: -window.innerWidth + 50 + "px", time: "150ms", complete: function(canceled) { } }); 
+				} else { 
+					openMenu = false; 
+					//$.ui.toggleSideMenu(false)
+					$("#content").css3Animate({x: "0px", time: "150ms", complete: function(canceled) { } }); 
+					$("#header").css3Animate({x: "0px", time: "150ms", complete: function(canceled) { } }); 
+				}
+			}
+        </script>
+	</head>
+
+    <body>
+        <div id="afui" class="fleft">
+            <!-- this is the splashscreen you see. -->
+            <div id="splashscreen" class='ui-loader heavy'>
+               
+            </div>
+			
+            <div id="header">
+				<div class="width100">
+					<div class="width100">
+						<div class="header-container-logo">
+							<img class="width100" src="img/logo.png" />
+						</div>
+						<!--<div class="header-container-bt-menu">
+							<a id='menubadge' onclick='menu()' class='menuButton'></a>
+						</div>-->
+						<div class="header-container-bt-menu"><a id='menubadge' onclick='menu()' style='' class='menuButton fleft'></a></div>
+					</div>
+				</div>
+			</div>			
+			
+			<div id="content">
+				<!--  INDEX  -->
+				<div id="main" class="panel trame-dark" data-transition="slide">
+					<div class="color-brown-title size20 title-recette-mois tac">Le recettes du mois</div>
+					<div title="" class="" id="webcarousel"  style="overflow:hidden; position: relative; top:-20px;">
+						<div id="carousel_dots" style="text-align: center; margin:auto;  display : table; clear: both; position: relative; top: 300px; z-index: 200"></div>
+						<div class="">
+							<div id="carousel" style="display:block;height:300px;width:100%;">
+								<div class="tac ma">
+									<a class="space-before-text" href="#recette">
+										<img class="width100 width300px" src="img/img-recette.jpg">
+										<div class="width100 width300px ma">
+											<div class="color-brown-title font-regular size20 tal space-before-text">Titre recette</div>
+											<div class="color-grey-title font-regular size12 tal space-before-text">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </div>
+										</div>
+									</a>
+								</div>
+								<div class="tac ma">
+									<a class="space-before-text" href="#recette">
+										<img class="width100 width300px" src="img/img-recette.jpg">
+										<div class="width100 width300px ma">
+											<div class="color-brown-title font-regular size20 tal space-before-text">Titre recette</div>
+											<div class="color-grey-title font-regular size12 tal space-before-text">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </div>
+										</div>
+									</a>
+								</div>
+								<div class="tac ma">
+									<a class="space-before-text" href="#recette">
+										<img class="width100 width300px" src="img/img-recette.jpg">
+										<div class="width100 width300px ma">
+											<div class="color-brown-title font-regular size20 tal space-before-text">Titre recette</div>
+											<div class="color-grey-title font-regular size12 tal space-before-text">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </div>
+										</div>
+									</a>
+								</div>
+								<div class="tac ma">
+									<a class="space-before-text" href="#recette">
+										<img class="width100 width300px" src="img/img-recette.jpg">
+										<div class="width100 width300px ma">
+											<div class="color-brown-title font-regular size20 tal space-before-text">Titre recette</div>
+											<div class="color-grey-title font-regular size12 tal space-before-text">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </div>
+										</div>
+									</a>
+								</div>
+								<div class="tac ma">
+									<a class="space-before-text" href="#recette">
+										<img class="width100 width300px" src="img/img-recette.jpg">
+										<div class="width100 width300px ma">
+											<div class="color-brown-title font-regular size20 tal space-before-text">Titre recette</div>
+											<div class="color-grey-title font-regular size12 tal space-before-text">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </div>
+										</div>
+									</a>
+								</div>
+							</div>
+							<script>
+								var carousel;
+								function init_carousel() {
+								carousel=$("#carousel").carousel({
+									pagingDiv: "carousel_dots",
+									pagingCssName: "carousel_paging2",
+									pagingCssNameSelected: "carousel_paging2_selected",
+									preventDefaults:true
+									});
+								}
+								window.addEventListener("load", init_carousel, false);
+							</script>
+						</div>
+						
+						<div id="last-container" class="trame-light">
+							<div class="color-brown-title size20 title-recette-mois tac">Les recettes les plus populaires</div>
+							<div title="" class="" id="webcarousel"  style="overflow:hidden; position: relative; top:10px;">
+								<script>
+									var tabNomRecette = new Array("recette0", "recette1", "recette2", "recette3","recette4");
+									var carousel2;
+									function init_carousel() {
+										carousel2=$("#carousel2").carousel({
+											preventDefaults:false,
+											pagingFunction:function(ind){
+												$("#nom-recette").html(tabNomRecette[ind]);
+											}
+										});
+									}
+									window.addEventListener("load", init_carousel, false);
+									
+									function removeLogo() {
+										$(".header-container-logo img").css("display", "none");
+									}
+								</script>
+								<!--<div id="carousel_dots2" style="text-align: center; margin:auto;  display : table; clear: both; position: relative; top:150px; z-index: 200"></div>-->
+								<div class="width100">
+									<div id="carousel2" style="display:block;height:100px;width:195px; margin:auto; overflow:visible !important">
+										<div class="tac">
+											<a href="#recette" onclick="removeLogo()"><img style="max-width:178px;" src="img/exemple2.png" /></a>
+										</div>
+										<div class="tac">
+											<a href="#recette"><img style="max-width:178px;" src="img/exemple2.png" /></a>
+										</div>
+										<div class="tac">
+											<a href="#recette"><img style="max-width:178px;" src="img/exemple2.png" /></a>
+										</div>
+										<div class="tac">
+											<a href="#recette"><img style="max-width:178px;" src="img/exemple2.png" /></a>
+										</div>
+										<div class="tac">
+											<a href="#recette"><img style="max-width:178px;" src="img/exemple2.png" /></a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="nom-recette" class="color-grey-title size14 title-recette-mois tac">Les recettes les plus populaires</div>
+							<div class="space20"></div>
+							<div class="space20"></div>
+							<div class="space20"></div>
+							<div class="space20"></div>
+							<script>
+								$("#nom-recette").html(tabNomRecette[0]);
+							</script>
+						</div>
+					</div> 
+				</div> 
+				
+				<!--  RECETTE  -->
+				<div id="recette" class="panel trame-light" data-transition="slide">
+					<div class="recette-header">
+						<div style="width:33%" class="fleft">
+							<div class="ma">
+								<div class="fleft"><img src="img/recette-picto-temps.png" style="max-width:38px;" /></div>
+								<div class="fleft color-grey-title size14 ma title-cat">30 min</div>
+							</div>
+						</div>
+						<div style="width:33%" class="fleft">
+							<div class="ma">
+								<div class="fleft"><img src="img/recette-picto-personne.png" style="max-width:38px;" /></div>
+								<div class="fleft color-grey-title size14 fleft title-cat">8/10 pers.</div>
+							</div>
+						</div>
+						<div style="width:33%" class="fleft">
+							<div class="ma">
+								<div class="fleft"><img src="img/recette-picto-note.png" style="max-width:38px;" /></div>
+								<div class="fleft color-grey-title size14 fleft title-cat">3.96/5</div>
+							</div>
+						</div>
+					</div>
+					<img class="width100" src="img/img-recette.jpg">
+					<div class="tabs"> 
+						<a href="#" class="fleft onglet-recette" style="width:33%;">
+							<div><img class="width100" src="img/onglet-actif.png" /></div>
+							<div><img class="width100" style="display:none;" src="img/onglet-attente.png" /></div>
+						</a>
+						<a href="#" class="fleft onglet-recette" style="width:33%;">
+							<div><img class="width100" style="display:none;" src="img/onglet-actif.png" /></div>
+							<div><img class="width100" src="img/onglet-attente.png" /></div>
+						</a>
+						<a href="#" class="fright onglet-recette" style="width:33%;">
+							<div><img class="width100" style="display:none;" src="img/onglet-actif.png" /></div>
+							<div><img class="width100" src="img/onglet-attente.png" /></div>
+						</a>
+					</div>
+					<div class="clearfix"></div>
+					<div class="swiper-container swiper-tabs">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<div class="content-slide2">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia vulputate hendrerit. Suspendisse potenti. Etiam rutrum egestas massa, ut facilisis magna tristique nec. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc interdum tempus turpis ut tempus. Mauris dictum blandit lectus, a dictum erat dictum non. Etiam ultrices convallis interdum. Curabitur varius auctor enim, quis dictum nibh fringilla ut. Sed vel lacus ac odio molestie sodales quis sit amet lacus. Curabitur id porta eros. Fusce in varius nisi.
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="content-slide2">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia vulputate hendrerit. Suspendisse potenti. Etiam rutrum egestas massa, ut facilisis magna tristique nec. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc interdum tempus turpis ut tempus. Mauris dictum blandit lectus, a dictum erat dictum non. Etiam ultrices convallis interdum. Curabitur varius auctor enim, quis dictum nibh fringilla ut. Sed vel lacus ac odio molestie sodales quis sit amet lacus. Curabitur id porta eros. Fusce in varius nisi.
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="content-slide2">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia vulputate hendrerit. Suspendisse potenti. Etiam rutrum egestas massa, ut facilisis magna tristique nec. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc interdum tempus turpis ut tempus. Mauris dictum blandit lectus, a dictum erat dictum non. Etiam ultrices convallis interdum. Curabitur varius auctor enim, quis dictum nibh fringilla ut. Sed vel lacus ac odio molestie sodales quis sit amet lacus. Curabitur id porta eros. Fusce in varius nisi.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!--  GASTRONOMIE CORSE  -->
+				<div id="gastronomie" class="panel trame-light" data-transition="slide">
+					GASTRONOMIE
+				</div>
+				
+				<!--  RECETTE FAVORITES  -->
+				<div id="favoris" class="panel trame-light" data-transition="slide">
+					RECETTE FAVORITES
+				</div>
+				
+				<!--  LISTE RECETTE  -->
+				<div id="liste-recette" class="panel trame-light" data-transition="slide">
+					
+				</div>
+				
+				<!--  CREDITS  -->
+				<div id="credits" class="panel trame-light" data-transition="slide">
+					CREDITS
+				</div>
+				
+				<!--  MENTIONS LEGALES  -->
+				<div id="mentions" class="panel trame-light" data-transition="slide">
+					MENTIONS LEGALES
+				</div>
+				
+			</div>
+			
+			<nav>
+				<div class="back-input">
+					<input class="input-search" />
+				</div>
+				<a href="#main" onclick="menu();">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon1.png" />
+						<div class="fleft text-short-menu black font-din">Accueil</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<a href="#gastronomie" onclick="menu();">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon2.png" />
+						<div class="fleft text-short-menu black font-din">Gastronomie Corse</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<a href="#favoris" onclick="menu();">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon3.png" />
+						<div class="fleft text-short-menu black font-din">Recettes favorites</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<div class="back-inter-menu">
+					<div class="fleft text-short-menu black font-din">RECETTES PAR CATÉGORIES</div>
+				</div>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<a href="#liste-recette" onclick="getListMenu(0);">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon4.png" />
+						<div class="fleft text-short-menu black font-din">Salades</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<a href="#liste-recette" onclick="getListMenu(1);">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon5.png" />
+						<div class="fleft text-short-menu black font-din">Viandes</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<a href="#liste-recette" onclick="getListMenu(2);">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon6.png" />
+						<div class="fleft text-short-menu black font-din">Poissons</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<a href="#liste-recette" onclick="getListMenu(3);">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon7.png" />
+						<div class="fleft text-short-menu black font-din">Fromages</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<a href="#liste-recette" onclick="getListMenu(4);">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon8.png" />
+						<div class="fleft text-short-menu black font-din">Légumes</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<a href="#liste-recette" onclick="getListMenu(5);">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon9.png" />
+						<div class="fleft text-short-menu black font-din">Fruits</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<a href="#liste-recette" onclick="getListMenu(6);">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon10.png" />
+						<div class="fleft text-short-menu black font-din">Dessert</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<a href="#liste-recette" onclick="getListMenu(7);">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon11.png" />
+						<div class="fleft text-short-menu black font-din">Boissons</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<div class="back-inter-menu">
+					<div class="fleft text-short-menu black font-din">A PROPOS</div>
+				</div>
+				<div class="cb menu-line-up"></div>
+				<div class="cb menu-line-down"></div>
+				<a href="#credits" onclick="menu();">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon12.png" />
+						<div class="fleft text-short-menu black font-din">Crédits</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<a href="mentions" onclick="menu();">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon13.png" />
+						<div class="fleft text-short-menu black font-din">Mentions légales</div>
+					</div>
+				</a>
+			</nav>
+			
+		</div>
+		
+		<!--<div id="menu" class="fleft">
+			<div class="back-input">
+				<input class="input-search" />
+			</div>
+			<a onclick="changePage('main');">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon1.png" />
+					<div class="fleft text-short-menu black font-din">Accueil</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a onclick="changePage('gastronomie');">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon2.png" />
+					<div class="fleft text-short-menu black font-din">Gastronomie Corse</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a href="#favoris" onclick="changePage('favoris');">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon3.png" />
+					<div class="fleft text-short-menu black font-din">Recettes favorites</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<div class="back-inter-menu">
+				<div class="fleft text-short-menu black font-din">RECETTES PAR CATÉGORIES</div>
+			</div>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a href="#liste-recette" onclick="getListMenu(0);">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon4.png" />
+					<div class="fleft text-short-menu black font-din">Salades</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a href="#liste-recette" onclick="getListMenu(1);">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon5.png" />
+					<div class="fleft text-short-menu black font-din">Viandes</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a href="#liste-recette" onclick="getListMenu(2);">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon6.png" />
+					<div class="fleft text-short-menu black font-din">Poissons</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a href="#liste-recette" onclick="getListMenu(3);">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon7.png" />
+					<div class="fleft text-short-menu black font-din">Fromages</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a href="#liste-recette" onclick="getListMenu(4);">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon8.png" />
+					<div class="fleft text-short-menu black font-din">Légumes</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a href="#liste-recette" onclick="getListMenu(5);">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon9.png" />
+					<div class="fleft text-short-menu black font-din">Fruits</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a href="#liste-recette" onclick="getListMenu(6);">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon10.png" />
+					<div class="fleft text-short-menu black font-din">Dessert</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a href="#liste-recette" onclick="getListMenu(7);">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon11.png" />
+					<div class="fleft text-short-menu black font-din">Boissons</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<div class="back-inter-menu">
+				<div class="fleft text-short-menu black font-din">A PROPOS</div>
+			</div>
+			<div class="cb menu-line-up"></div>
+			<div class="cb menu-line-down"></div>
+			<a onclick="changePage('credits');">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon12.png" />
+					<div class="fleft text-short-menu black font-din">Crédits</div>
+				</div>
+			</a>
+			<div class="cb menu-line-up "></div>
+			<div class="cb menu-line-down "></div>
+			<a onclick="changePage('mentions');">
+				<div class="back-menu">
+					<img class="max-width-icon fleft" src="img/icon/icon13.png" />
+					<div class="fleft text-short-menu black font-din">Mentions légales</div>
+				</div>
+			</a>
+		</div>-->
+    </body>
+</html>
