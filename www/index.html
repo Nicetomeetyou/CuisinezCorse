@@ -162,6 +162,7 @@
 			$(function() { $("#menu-custom").css("width", window.innerWidth - 50 + "px !important"); });
 			
 			function menu() {
+				alert("MENU");
 				if(!openMenu) { 
 					openMenu = true; 
 					$.ui.toggleSideMenu(true)
@@ -194,7 +195,7 @@
 				</div>
 			</div>			
 			
-			<div id="content" style="overflow:hidden;">
+			<div id="content">
 				<!--  INDEX  -->
 				<div id="main" class="panel trame-dark" data-transition="slide">
 					<div class="color-brown-title size20 title-recette-mois tac">Le recettes du mois</div>
@@ -401,7 +402,7 @@
 				
 			</div>
 			
-			<nav id="menu-custom">
+			<nav>
 				<div class="back-input">
 					<input class="input-search" />
 				</div>
