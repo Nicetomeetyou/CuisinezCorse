@@ -266,56 +266,121 @@
 			</div>
             
 			<nav>
-				<div class="back-white-menu fright">
-				<div class="space10"></div>
-					<!--<a href="#main" onclick="$.ui.toggleNavMenu(false); trackPage('menu');">-->
-					<a href="#main" onclick="menu_accueil()">
-						<div class="menu-line">
-							<img class="picto-menu-0 fleft" src="img/menu-picto-0.jpg" />
-							<div class="fleft text-short-menu black font-din">Accueil</div>
-						</div>
-					</a>
-					<div class="grey-line cb"></div>
-					<!--<a href="#calculatrice"onclick="$.ui.toggleNavMenu(false); trackPage('calculatrice');">-->
-					<a href="#calculatrice" onclick="menu()">
-						<div class="menu-line">
-							<img class="picto-menu-1 fleft" src="img/menu-picto-1.jpg" />
-							<div class="fleft text-short-menu black font-din">Calculatrice</div>
-						</div>
-					</a>
-					<div class="grey-line cb"></div>
-					<!--<a href="#conseil"onclick="$.ui.toggleNavMenu(false); trackPage('conseils');">-->
-					<a href="#conseil" onclick="menu()">
-						<div class="menu-line">
-							<img class="picto-menu-2 fleft" src="img/menu-picto-2.jpg" />
-							<div class="fleft text-short-menu black font-din">Conseils</div>
-						</div>
-					</a>
-					<div class="grey-line cb"></div>
-					<!--<a href="#catalogue" onclick="$.ui.toggleNavMenu(false); trackPage('catalogue');">-->
-					<a href="#catalogue" onclick="menu()">
-						<div class="menu-line">
-							<img class="picto-menu-3 fleft" src="img/menu-picto-3.jpg" />
-							<div class="fleft text-short-menu black font-din">Catalogue</div>
-						</div>
-					</a>
-					<div class="grey-line cb"></div>
-					<!--<a href="#contact" onclick="$.ui.toggleNavMenu(false); trackPage('contact');">-->
-					<a href="#contact" onclick="menu()">
-						<div class="menu-line">
-							<img class="picto-menu-4 fleft" src="img/menu-picto-4.jpg" />
-							<div class="fleft text-short-menu black font-din">Contact</div>
-						</div>
-					</a>
-					<div class="grey-line cb"></div>
-					<!--<a href="#mention" onclick="$.ui.toggleNavMenu(false); trackPage('mention');">-->
-					<a href="#mention" onclick="menu()">
-						<div class="menu-line">
-							<img class="picto-menu-5 fleft" src="img/menu-picto-5.jpg" />
-							<div class="fleft text-short-menu black font-din">Mentions légales</div>
-						</div>
-					</a>
+				<div class="back-input">
+					<input class="input-search" />
 				</div>
+				<a href="#main" onclick="menu();">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon1.png" />
+						<div class="fleft text-short-menu black font-din">Accueil</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<a href="#gastronomie" onclick="menu();">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon2.png" />
+						<div class="fleft text-short-menu black font-din">Gastronomie Corse</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<a href="#favoris" onclick="menu();">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon3.png" />
+						<div class="fleft text-short-menu black font-din">Recettes favorites</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<div class="back-inter-menu">
+					<div class="fleft text-short-menu black font-din">RECETTES PAR CATÉGORIES</div>
+				</div>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<a href="#liste-recette" onclick="getListMenu(0);">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon4.png" />
+						<div class="fleft text-short-menu black font-din">Salades</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<a href="#liste-recette" onclick="getListMenu(1);">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon5.png" />
+						<div class="fleft text-short-menu black font-din">Viandes</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<a href="#liste-recette" onclick="getListMenu(2);">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon6.png" />
+						<div class="fleft text-short-menu black font-din">Poissons</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<a href="#liste-recette" onclick="getListMenu(3);">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon7.png" />
+						<div class="fleft text-short-menu black font-din">Fromages</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<a href="#liste-recette" onclick="getListMenu(4);">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon8.png" />
+						<div class="fleft text-short-menu black font-din">Légumes</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<a href="#liste-recette" onclick="getListMenu(5);">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon9.png" />
+						<div class="fleft text-short-menu black font-din">Fruits</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<a href="#liste-recette" onclick="getListMenu(6);">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon10.png" />
+						<div class="fleft text-short-menu black font-din">Dessert</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<a href="#liste-recette" onclick="getListMenu(7);">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon11.png" />
+						<div class="fleft text-short-menu black font-din">Boissons</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<div class="back-inter-menu">
+					<div class="fleft text-short-menu black font-din">A PROPOS</div>
+				</div>
+				<div class="cb menu-line-up"></div>
+				<div class="cb menu-line-down"></div>
+				<a href="#credits" onclick="menu();">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon12.png" />
+						<div class="fleft text-short-menu black font-din">Crédits</div>
+					</div>
+				</a>
+				<div class="cb menu-line-up "></div>
+				<div class="cb menu-line-down "></div>
+				<a href="mentions" onclick="menu();">
+					<div class="back-menu">
+						<img class="max-width-icon fleft" src="img/icon/icon13.png" />
+						<div class="fleft text-short-menu black font-din">Mentions légales</div>
+					</div>
+				</a>
 			</nav>
             			
         </div>
