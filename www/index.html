@@ -69,12 +69,18 @@
                 });
             }
             
-            var webRoot = "./";
-            $.os.android=true;
+             var webRoot = "./";
+            // $.os.android=true;
             $.ui.autoLaunch = true;
-            
-			$.ui.removeFooterMenu();
+            $.ui.openLinksNewTab = false;
+			//$.ui.removeFooterMenu();
             //$.ui.resetScrollers=false;
+            
+			$.ui.launch();
+			$.ui.disableNativeScrolling();
+			$.ui.disableSideMenu();
+			$.ui.backButtonText="Retour";
+			$.feat.nativeTouchScroll=false;
             
             $(document).ready(function(){
                 $.ui.launch();
