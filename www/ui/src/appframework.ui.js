@@ -567,13 +567,13 @@
                         if (callback) callback(canceled);
                     }
                 });*/
-				$("#content").css("z-index", "250");
+				//$("#content").css("z-index", "250");
 				$("#content").css3Animate({x: -window.innerWidth + 50 + "px", time: "150ms", complete: function(canceled) {
                         that.togglingSideMenu = false;
                         els.vendorCss("Transition", "");
                         if (callback) callback(canceled);
                     } }); 
-				$("#header").css("z-index", "250");
+				//$("#header").css("z-index", "250");
 				$("#header").css3Animate({x: -window.innerWidth + 50 + "px", time: "150ms", complete: function(canceled) {
                         that.togglingSideMenu = false;
                         els.vendorCss("Transition", "");
