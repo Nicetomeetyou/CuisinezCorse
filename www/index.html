@@ -193,13 +193,13 @@
 				if(!openMenu) { 
 					openMenu = true; 
 					//$.ui.toggleSideMenu(true)
-					$("#content").css3Animate({x: -window.innerWidth + 50 + "px", time: "150ms", complete: function(canceled) { } }); 
-					$("#header").css3Animate({x: -window.innerWidth + 50 + "px", time: "150ms", complete: function(canceled) { } }); 
+					$("#content").css3Animate({x: -window.innerWidth + 50 + "px", time: "150ms", callback: function () { } }); 
+					$("#header").css3Animate({x: -window.innerWidth + 50 + "px", time: "150ms", callback: function () { } }); 
 				} else { 
 					openMenu = false; 
 					//$.ui.toggleSideMenu(false)
-					$("#content").css3Animate({x: "0px", time: "150ms", complete: function(canceled) { } }); 
-					$("#header").css3Animate({x: "0px", time: "150ms", complete: function(canceled) { } }); 
+					$("#content").css3Animate({x: "0px", time: "150ms", callback: function () { } }); 
+					$("#header").css3Animate({x: "0px", time: "150ms", callback: function () { } }); 
 				}
 			}
         </script>
