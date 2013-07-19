@@ -218,51 +218,209 @@
 				</div>
 			</div>
             <div id="content">
+				<!--  INDEX  -->
+				<div id="main" class="panel trame-dark" data-transition="slide">
+					<div class="color-brown-title size20 title-recette-mois tac">Le recettes du mois</div>
+					<div title="" class="" id="webcarousel"  style="overflow:hidden; position: relative; top:-20px;">
+						<div id="carousel_dots" style="text-align: center; margin:auto;  display : table; clear: both; position: relative; top: 300px; z-index: 200"></div>
+						<div class="">
+							<div id="carousel" style="display:block;height:300px;width:100%;">
+								<div class="tac ma">
+									<a class="space-before-text" href="#recette">
+										<img class="width100 width300px" src="img/img-recette.jpg">
+										<div class="width100 width300px ma">
+											<div class="color-brown-title font-regular size20 tal space-before-text">Titre recette</div>
+											<div class="color-grey-title font-regular size12 tal space-before-text">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </div>
+										</div>
+									</a>
+								</div>
+								<div class="tac ma">
+									<a class="space-before-text" href="#recette">
+										<img class="width100 width300px" src="img/img-recette.jpg">
+										<div class="width100 width300px ma">
+											<div class="color-brown-title font-regular size20 tal space-before-text">Titre recette</div>
+											<div class="color-grey-title font-regular size12 tal space-before-text">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </div>
+										</div>
+									</a>
+								</div>
+								<div class="tac ma">
+									<a class="space-before-text" href="#recette">
+										<img class="width100 width300px" src="img/img-recette.jpg">
+										<div class="width100 width300px ma">
+											<div class="color-brown-title font-regular size20 tal space-before-text">Titre recette</div>
+											<div class="color-grey-title font-regular size12 tal space-before-text">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </div>
+										</div>
+									</a>
+								</div>
+								<div class="tac ma">
+									<a class="space-before-text" href="#recette">
+										<img class="width100 width300px" src="img/img-recette.jpg">
+										<div class="width100 width300px ma">
+											<div class="color-brown-title font-regular size20 tal space-before-text">Titre recette</div>
+											<div class="color-grey-title font-regular size12 tal space-before-text">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </div>
+										</div>
+									</a>
+								</div>
+								<div class="tac ma">
+									<a class="space-before-text" href="#recette">
+										<img class="width100 width300px" src="img/img-recette.jpg">
+										<div class="width100 width300px ma">
+											<div class="color-brown-title font-regular size20 tal space-before-text">Titre recette</div>
+											<div class="color-grey-title font-regular size12 tal space-before-text">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </div>
+										</div>
+									</a>
+								</div>
+							</div>
+							<script>
+								var carousel;
+								function init_carousel() {
+								carousel=$("#carousel").carousel({
+									pagingDiv: "carousel_dots",
+									pagingCssName: "carousel_paging2",
+									pagingCssNameSelected: "carousel_paging2_selected",
+									preventDefaults:true
+									});
+								}
+								window.addEventListener("load", init_carousel, false);
+							</script>
+						</div>
+						
+						<div id="last-container" class="trame-light">
+							<div class="color-brown-title size20 title-recette-mois tac">Les recettes les plus populaires</div>
+							<div title="" class="" id="webcarousel"  style="overflow:hidden; position: relative; top:10px;">
+								<script>
+									var tabNomRecette = new Array("recette0", "recette1", "recette2", "recette3","recette4");
+									var carousel2;
+									function init_carousel() {
+										carousel2=$("#carousel2").carousel({
+											preventDefaults:false,
+											pagingFunction:function(ind){
+												$("#nom-recette").html(tabNomRecette[ind]);
+											}
+										});
+									}
+									window.addEventListener("load", init_carousel, false);
+									
+									function removeLogo() {
+										$(".header-container-logo img").css("display", "none");
+									}
+								</script>
+								<!--<div id="carousel_dots2" style="text-align: center; margin:auto;  display : table; clear: both; position: relative; top:150px; z-index: 200"></div>-->
+								<div class="width100">
+									<div id="carousel2" style="display:block;height:100px;width:195px; margin:auto; overflow:visible !important">
+										<div class="tac">
+											<a href="#recette" onclick="removeLogo()"><img style="max-width:178px;" src="img/exemple2.png" /></a>
+										</div>
+										<div class="tac">
+											<a href="#recette"><img style="max-width:178px;" src="img/exemple2.png" /></a>
+										</div>
+										<div class="tac">
+											<a href="#recette"><img style="max-width:178px;" src="img/exemple2.png" /></a>
+										</div>
+										<div class="tac">
+											<a href="#recette"><img style="max-width:178px;" src="img/exemple2.png" /></a>
+										</div>
+										<div class="tac">
+											<a href="#recette"><img style="max-width:178px;" src="img/exemple2.png" /></a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="nom-recette" class="color-grey-title size14 title-recette-mois tac">Les recettes les plus populaires</div>
+							<div class="space20"></div>
+							<div class="space20"></div>
+							<div class="space20"></div>
+							<div class="space20"></div>
+							<script>
+								$("#nom-recette").html(tabNomRecette[0]);
+							</script>
+						</div>
+					</div> 
+				</div> 
 				
-				
-				<!--MENTION-->
-				<div id="mention" class="panel" style="overflow:hidden" js-scrolling="true">
-					<div class="space20"></div>
-					<div class="tac size40 font-din over-text">
-						MENTIONS LÉGALES
+				<!--  RECETTE  -->
+				<div id="recette" class="panel trame-light" data-transition="slide">
+					<div class="recette-header">
+						<div style="width:33%" class="fleft">
+							<div class="ma">
+								<div class="fleft"><img src="img/recette-picto-temps.png" style="max-width:38px;" /></div>
+								<div class="fleft color-grey-title size14 ma title-cat">30 min</div>
+							</div>
+						</div>
+						<div style="width:33%" class="fleft">
+							<div class="ma">
+								<div class="fleft"><img src="img/recette-picto-personne.png" style="max-width:38px;" /></div>
+								<div class="fleft color-grey-title size14 fleft title-cat">8/10 pers.</div>
+							</div>
+						</div>
+						<div style="width:33%" class="fleft">
+							<div class="ma">
+								<div class="fleft"><img src="img/recette-picto-note.png" style="max-width:38px;" /></div>
+								<div class="fleft color-grey-title size14 fleft title-cat">3.96/5</div>
+							</div>
+						</div>
 					</div>
-					<img style="height: 50%; left: 0%; position: absolute; top: -13%; width: 100%; z-index: 1;" src="img/backmenu.png" />
-					<div class="space20"></div>
-					<div class="back-white-calculette over-text">
-						<div class="space10"></div>
-						<div class="size26 black font-din back-white-mention no-uppercase">
-							<h2>1. Présentation de notre application mobile</h2>
-							Conformément à la loi n° 2004-2005 du 21 juin 2004 pour la confiance dans l'économie numérique, notre application mobile créé par <span class="orange" onclick="openSiteN()">NiceToMeetYou</span>, propriétaire du site <span class="orange" onclick="openSiteN()">http://www.ntmy.fr</span>, met à disposition du public les informations concernant notre entreprise.<br />
-							Eventuellement modifiables, nous vous invitons donc à consulter nos mentions légales le plus souvent possible, de manière à en prendre connaissance fréquemment.
-							L'application mobile du site <span class="orange" onclick="openSiteJ()">www.jouplast.com</span> appartient à Jouplast - Société par actions simplifiée , dont le siège social est situé à l'adresse suivante : 01250 Simandre sur Suran .<br />
-							Personne physique ou morale, Richard BERTONI est responsable de la publication, dont l'adresse e-mail est la suivante : <span class="orange" onclick="sendEmail();">rbertoni@tmpinnovations.com</span><br />
-							Le webmaster, Richard BERTONI, est responsable de l'administration du site, dont l'adresse e-mail est la suivante : <span class="orange" onclick="sendEmail();">rbertoni@tmpinnovations.com</span>.<br />
-							Le site <span class="orange" onclick="openSiteJ()">www.jouplast.com</span> est hébergé par Siti, dont le siège social est localisé à l'adresse suivante : 53 Avenue Alsace Lorraine 01000 Bourg-en-Bresse.
-							<br/><br/><br/><h2>2. Conditions générales d’utilisation de l'application mobile et des services proposés</h2>
-							En utilisant notre application mobile du site <span class="orange" onclick="openSiteJ()">www.jouplast.com</span>, vous acceptez pleinement et entièrement les conditions générales d'utilisation précisées dans nos mentions légales. 
-							<br/><br/><br/><h2>3. Les produits ou services proposés par <span class="orange" onclick="openSiteJ()">www.jouplast.com</span></h2>
-							En accord avec sa politique de communication, l'application mobile du site <span class="orange" onclick="openSiteJ()">www.jouplast.com</span> a pour vocation d'informer les utilisateurs sur les services proposés par Jouplast, qui s'efforce alors de fournir des informations précises sur son activité et ses équipements. Cependant, des inexactitudes ou des omissions peuvent exister : la société ne pourra en aucun cas être tenue pour responsable pour toute erreur présente sur l'application mobile.
-							<br/><br/><br/><h2>4.  Limitations contractuelles</h2>
-							Les informations retranscrites sur notre application mobile et notre site <span class="orange" onclick="openSiteJ()">www.jouplast.com</span> font l’objet de démarches qualitatives, en vue de nous assurer de leur fiabilité. Cependant, nous ne pourrons encourir de responsabilités en cas d’inexactitudes techniques lors de nos explications.<br />
-							Si vous constatez une erreur concernant des informations que nous auront pu omettre, n’hésitez pas à nous le signaler par mail à <span class="orange" onclick="sendEmail();">rbertoni@tmpinnovations.com</span>.
-							Les liens reliés directement ou indirectement à notre application mobile ne sont pas sous le contrôle de notre société. Par conséquent, nous ne pouvons nous assurer de l’exactitude des informations présentes sur ces autres sites Internet.
-							Utilisant la technologie JavaScript, l'application mobile du site <span class="orange" onclick="openSiteJ()">www.jouplast.com</span> ne pourra être tenu pour responsable en cas de dommages matériels liés à son utilisation. Par ailleurs, toute autre type de conséquence liée à l'exploitation de l'application mobile du site <span class="orange" onclick="openSiteJ()">www.jouplast.com</span>, qu'elle soit direct ou indirect (bug, incompatibilité, virus, perte de marché, etc.).
-							<br/><br/><br/><h2>5. Propriété intellectuelle et contenu du site Internet</h2>
-							Le contenu rédactionnel et visuel de l'application mobile du site web <span class="orange" onclick="openSiteJ()">www.jouplast.com</span> appartient exclusivement à la société Virtual Sh@ring Partner Ltd. Toute violation des droits d’auteur est sanctionnée par l’article L.335-2 du Code de la Propriété Intellectuelle, avec une peine encourue de 2 ans d’emprisonnement et de 150 000€ d’amende
-							L'application mobile du site <span class="orange" onclick="openSiteJ()">www.jouplast.com</span> ne pourra être mis en cause en cas de propos injurieux, à caractère raciste, diffamant ou pornographique, échangés sur les espaces interactifs. La société se réserve également le droit de supprimer tout contenu contraire aux valeurs de l'entreprise ou à la législation applicable en France.
-							<br/><br/><br/><h2>6. Données personnelles, respect de votre vie privée et de vos libertés</h2>
-							Toute informations recueillie sur l'application mobile du site web <span class="orange" onclick="openSiteJ()">www.jouplast.com</span> se font dans le cadre des besoins liés à l'utilisation de notre plateforme, tels que le formulaire de commande ou la demande d'inscription à la Newsletter. Par ailleurs, le désabonnement de la Newsletter se fait grâce au lien situé en pied de page.
-							Jouplast s'engage à ne céder en aucun cas les informations concernant les utilisateurs du site Internet, de quelque façon qu'il soit (vente, échange, prêt, location, don).
-							Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée en 2004, l’utilisateur bénéficie d’un droit d’accès et de rectification aux informations le concernant, droit qu’il peut exercer à tout moment en adressant un mail à l’adresse <span class="orange" onclick="sendEmail();">rbertoni@tmpinnovations.com</span>, ou en effectuant sa demande par courrier, à l’adresse suivante : 01250 Simandre sur Suran.
-							<br/><br/><br/><h2>7. Droit applicable et lois concernées</h2>
-							Soumis au droit français, l'application mobile du site web <span class="orange" onclick="openSiteJ()">www.jouplast.com</span> est encadré par la loi n° 2004-2005 du 21 juin 2004 pour la confiance dans l'économie numérique, l’article L.335-2 du Code de la Propriété Intellectuelle et la loi « informatique et libertés » du 6 janvier 1978 modifiée en 2004.
-							<br/><br/><br/><h2>8. Clause de non-concurrence et de non contournement</h2>
-							L’Utilisateur reconnaît que les informations concernant la présente application mobile sont la propriété exclusive de la société Virtual Sh@ring Partner Ltd, Company N° 8520792, et ne peuvent être copiées ou reproduites même partiellement, sans l’autorisation expresse, écrite et préalable de la société Virtual Sh@ring Partner Ltd. (article L. 122-4 et L. 335-2 du Code de la Propriété Intellectuelle) Les originaux et toutes les copies de ces informations devront être restitués dans les 20 jours suivant toute demande de la société Virtual Sh@ring Partner Ltd.
-							L’Utilisateur s’engage à ne pas divulguer les informations relevant des connaissances de la société Virtual Sh@ring Partner Ltd et à se garder de tout comportement qui pourrait, directement ou indirectement, priver la société Virtual Sh@ring Partner Ltd de droits, honoraires, bénéfices de toute nature qui pourraient lui être dus au titre de ces informations. Il s’engage, notamment, à ne pas tenter de contourner la société Virtual Sh@ring Partner Ltd, ni d’utiliser les renseignements confidentiels, pour chercher à tirer parti par quelque moyen que ce soit d’une information communiquée, comme par exemple s’approprier ou utiliser seul ou avec des tiers tout ou partie d’une information ou encore contacter sans accord préalable de la société Virtual Sh@ring Partner Ltd, une partie dont les coordonnées lui auraient été communiquées par cette dernière.
+					<img class="width100" src="img/img-recette.jpg">
+					<div class="tabs"> 
+						<a href="#" class="fleft onglet-recette" style="width:33%;">
+							<div><img class="width100" src="img/onglet-actif.png" /></div>
+							<div><img class="width100" style="display:none;" src="img/onglet-attente.png" /></div>
+						</a>
+						<a href="#" class="fleft onglet-recette" style="width:33%;">
+							<div><img class="width100" style="display:none;" src="img/onglet-actif.png" /></div>
+							<div><img class="width100" src="img/onglet-attente.png" /></div>
+						</a>
+						<a href="#" class="fright onglet-recette" style="width:33%;">
+							<div><img class="width100" style="display:none;" src="img/onglet-actif.png" /></div>
+							<div><img class="width100" src="img/onglet-attente.png" /></div>
+						</a>
+					</div>
+					<div class="clearfix"></div>
+					<div class="swiper-container swiper-tabs">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<div class="content-slide2">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia vulputate hendrerit. Suspendisse potenti. Etiam rutrum egestas massa, ut facilisis magna tristique nec. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc interdum tempus turpis ut tempus. Mauris dictum blandit lectus, a dictum erat dictum non. Etiam ultrices convallis interdum. Curabitur varius auctor enim, quis dictum nibh fringilla ut. Sed vel lacus ac odio molestie sodales quis sit amet lacus. Curabitur id porta eros. Fusce in varius nisi.
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="content-slide2">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia vulputate hendrerit. Suspendisse potenti. Etiam rutrum egestas massa, ut facilisis magna tristique nec. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc interdum tempus turpis ut tempus. Mauris dictum blandit lectus, a dictum erat dictum non. Etiam ultrices convallis interdum. Curabitur varius auctor enim, quis dictum nibh fringilla ut. Sed vel lacus ac odio molestie sodales quis sit amet lacus. Curabitur id porta eros. Fusce in varius nisi.
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="content-slide2">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia vulputate hendrerit. Suspendisse potenti. Etiam rutrum egestas massa, ut facilisis magna tristique nec. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc interdum tempus turpis ut tempus. Mauris dictum blandit lectus, a dictum erat dictum non. Etiam ultrices convallis interdum. Curabitur varius auctor enim, quis dictum nibh fringilla ut. Sed vel lacus ac odio molestie sodales quis sit amet lacus. Curabitur id porta eros. Fusce in varius nisi.
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-				<!--END MENTION-->
+				
+				<!--  GASTRONOMIE CORSE  -->
+				<div id="gastronomie" class="panel trame-light" data-transition="slide">
+					GASTRONOMIE
+				</div>
+				
+				<!--  RECETTE FAVORITES  -->
+				<div id="favoris" class="panel trame-light" data-transition="slide">
+					RECETTE FAVORITES
+				</div>
+				
+				<!--  LISTE RECETTE  -->
+				<div id="liste-recette" class="panel trame-light" data-transition="slide">
+					
+				</div>
+				
+				<!--  CREDITS  -->
+				<div id="credits" class="panel trame-light" data-transition="slide">
+					CREDITS
+				</div>
+				
+				<!--  MENTIONS LEGALES  -->
+				<div id="mentions" class="panel trame-light" data-transition="slide">
+					MENTIONS LEGALES
+				</div>
 			</div>
         </div>
 		<div>
