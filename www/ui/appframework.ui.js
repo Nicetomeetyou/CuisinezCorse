@@ -3524,6 +3524,7 @@
                 that.loadContent(tmpEl.target + "", 0, 1, tmpEl.transition);
                 that.transitionType = tmpEl.transition;
                 that.updateHash(tmpEl.target);
+				console.log( this.history.pop() );
             }
         },
         /**
@@ -4734,7 +4735,7 @@
             }
 
             //insert backbutton (should optionally be left to developer..)
-            $(this.header).html('<a id="backButton" class="button"></a> <h1 id="pageTitle"></h1>' + header.innerHTML);
+            $(this.header).html('<a id="backButton" class="button"></a><h1 id="pageTitle"></h1>' + header.innerHTML);
             this.backButton = $.query("#header #backButton").css("visibility", "hidden");
             $(document).on("click", "#header #backButton", function(e) {
                 e.preventDefault();

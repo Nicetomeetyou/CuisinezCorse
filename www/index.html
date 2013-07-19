@@ -31,14 +31,8 @@
         <script type="text/javascript" charset="utf-8" src="./appframework.js"></script>
         <!-- include af.desktopBrowsers.js on desktop browsers only -->
         <script>
-            function loadedPanel(what) {
-                //We are going to set the badge as the number of li elements inside the target
-                $.ui.updateBadge("#aflink", $("#af").find("li").length);
-            }
-			
-            function unloadedPanel(what) {
-                console.log("unloaded " + what.id);
-            }
+            function loadedPanel(what) { $.ui.updateBadge("#aflink", $("#af").find("li").length); }
+            function unloadedPanel(what) { console.log("unloaded " + what.id); }
 			
             if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchstart' in window)) {
                 var script = document.createElement("script");
@@ -62,14 +56,11 @@
         <script type="text/javascript" charset="utf-8" src="plugins/af.slidemenu.js"></script>
 
         <script type="text/javascript">
-            /* This function runs once the page is loaded, but appMobi is not yet active */
-            //$.ui.animateHeaders=false;
+            $.ui.animateHeaders=false;
             var search=document.location.search.toLowerCase().replace("?","");
-             //if(!search)
-                //$.os.useOSThemes=false;
-                
-            if(search) //Android fix has too many buggy issues on iOS - can't preview with $.os.android
-            {
+            $.os.useOSThemes=false;
+            
+            if(search) {
                $.os.useOSThemes=true;
                 if(search=="win8")
                     $.os.ie=true;
@@ -126,20 +117,49 @@
                 });
             }
 			
+			var listRecette;
+			
 			function doJSON() {
 				console.log('Get JSON');
 				$.getJSON(webRoot + '/json/recette.html', function (data) {
-					//console.log(JSON.stringify(data))
+					listRecette = data;
 				});
+			}
+			
+			var tabRecette;
+			
+			function getListMenu(pNum) {
+				tabRecette = new Array();
+				var key, count = 0, str="";
+				for(var key in listRecette.recette) {
+					if (listRecette.recette.hasOwnProperty(key)) {
+						if(listRecette.recette[key].categorie == pNum){
+							str += 	'<div>';
+							str +=		'<div class="photo-list">';
+							str +=			'<img class="width100 align-middle" src="img/img-recette.jpg" />';
+							str +=		'</div>';
+							str +=		'<div class="tac">';
+							str +=			'<img class="arrow-up" src="img/arrow-up.png" />';
+							str +=		'</div>';
+							str +=		'<div class="text-list">';
+							str +=			'<div class="size20 color-brown-title">'+listRecette.recette[key].title+'</div>';
+							str +=				'<div>'+listRecette.recette[key].description+'</div>';
+							str +=			'</div>';
+							str +=		'</div>';
+							str +=	'</div>';
+						}
+					}
+				}
+				
+				$.ui.loadContent("liste-recette",false,false,"none");
+				$("#liste-recette").html(str);
+				menu();
 			}
 			
 			doJSON();
 			
 			var openMenu = false;
-			
-			$(function() {
-				$("#menu").css("width", window.innerWidth - 50 + "px");
-			});
+			$(function() { $("#menu").css("width", window.innerWidth - 50 + "px"); });
 			
 			function menu() {
 				if(!openMenu) { 
@@ -162,7 +182,10 @@
 				setTimeout(function(){$.ui.setBackButtonVisibility(false);},1);
 			}
 			
-			
+			function changePage(pPage) {
+				$.ui.loadContent(pPage,false,false,'none');
+				menu();
+			}
         </script>
 	</head>
 
@@ -188,7 +211,7 @@
 			
 			<div id="content" style="overflow:hidden;">
 				<!--  INDEX  -->
-				<div id="main" class="panel trame-dark">
+				<div id="main" class="panel trame-dark" data-transition="slide">
 					<div class="color-brown-title size20 title-recette-mois tac">Le recettes du mois</div>
 					<div title="" class="" id="webcarousel"  style="overflow:hidden; position: relative; top:-20px;">
 						<div id="carousel_dots" style="text-align: center; margin:auto;  display : table; clear: both; position: relative; top: 300px; z-index: 200"></div>
@@ -308,7 +331,7 @@
 				</div> 
 				
 				<!--  RECETTE  -->
-				<div id="recette" class="panel trame-light">
+				<div id="recette" class="panel trame-light" data-transition="slide">
 					<div class="recette-header">
 						<div style="width:33%" class="fleft">
 							<div class="ma">
@@ -365,6 +388,31 @@
 						</div>
 					</div>
 				</div>
+				
+				<!--  GASTRONOMIE CORSE  -->
+				<div id="gastronomie" class="panel trame-light" data-transition="slide">
+					GASTRONOMIE
+				</div>
+				
+				<!--  RECETTE FAVORITES  -->
+				<div id="favoris" class="panel trame-light" data-transition="slide">
+					RECETTE FAVORITES
+				</div>
+				
+				<!--  LISTE RECETTE  -->
+				<div id="liste-recette" class="panel trame-light" data-transition="slide">
+					
+				</div>
+				
+				<!--  CREDITS  -->
+				<div id="credits" class="panel trame-light" data-transition="slide">
+					CREDITS
+				</div>
+				
+				<!--  mentions  -->
+				<div id="mentions" class="panel trame-light" data-transition="slide">
+					MENTIONS LEGALES
+				</div>
 			</div>
 			
 			<!-- bottom navbar.  Add additional tabs here -->
@@ -377,7 +425,7 @@
 			<div class="back-input">
 				<input class="input-search" />
 			</div>
-			<a href="#main" onclick="menu_accueil()">
+			<a onclick="changePage('main');">
 				<div class="back-menu">
 					<img class="max-width-icon fleft" src="img/icon/icon1.png" />
 					<div class="fleft text-short-menu black font-din">Accueil</div>
@@ -385,7 +433,7 @@
 			</a>
 			<div class="cb menu-line-up "></div>
 			<div class="cb menu-line-down "></div>
-			<a href="#recette" onclick="menu()">
+			<a onclick="changePage('gastronomie');">
 				<div class="back-menu">
 					<img class="max-width-icon fleft" src="img/icon/icon2.png" />
 					<div class="fleft text-short-menu black font-din">Gastronomie Corse</div>
@@ -393,7 +441,7 @@
 			</a>
 			<div class="cb menu-line-up "></div>
 			<div class="cb menu-line-down "></div>
-			<a href="#recette" onclick="menu()">
+			<a href="#favoris" onclick="changePage('favoris');">
 				<div class="back-menu">
 					<img class="max-width-icon fleft" src="img/icon/icon3.png" />
 					<div class="fleft text-short-menu black font-din">Recettes favorites</div>
@@ -406,7 +454,7 @@
 			</div>
 			<div class="cb menu-line-up "></div>
 			<div class="cb menu-line-down "></div>
-			<a href="#recette" onclick="menu()">
+			<a href="#liste-recette" onclick="getListMenu(0);">
 				<div class="back-menu">
 					<img class="max-width-icon fleft" src="img/icon/icon4.png" />
 					<div class="fleft text-short-menu black font-din">Salades</div>
@@ -414,7 +462,7 @@
 			</a>
 			<div class="cb menu-line-up "></div>
 			<div class="cb menu-line-down "></div>
-			<a href="#recette" onclick="menu()">
+			<a href="#liste-recette" onclick="getListMenu(1);">
 				<div class="back-menu">
 					<img class="max-width-icon fleft" src="img/icon/icon5.png" />
 					<div class="fleft text-short-menu black font-din">Viandes</div>
@@ -422,7 +470,7 @@
 			</a>
 			<div class="cb menu-line-up "></div>
 			<div class="cb menu-line-down "></div>
-			<a href="#recette" onclick="menu()">
+			<a href="#liste-recette" onclick="getListMenu(2);">
 				<div class="back-menu">
 					<img class="max-width-icon fleft" src="img/icon/icon6.png" />
 					<div class="fleft text-short-menu black font-din">Poissons</div>
@@ -430,7 +478,7 @@
 			</a>
 			<div class="cb menu-line-up "></div>
 			<div class="cb menu-line-down "></div>
-			<a href="#recette" onclick="menu()">
+			<a href="#liste-recette" onclick="getListMenu(3);">
 				<div class="back-menu">
 					<img class="max-width-icon fleft" src="img/icon/icon7.png" />
 					<div class="fleft text-short-menu black font-din">Fromages</div>
@@ -438,7 +486,7 @@
 			</a>
 			<div class="cb menu-line-up "></div>
 			<div class="cb menu-line-down "></div>
-			<a href="#recette" onclick="menu()">
+			<a href="#liste-recette" onclick="getListMenu(4);">
 				<div class="back-menu">
 					<img class="max-width-icon fleft" src="img/icon/icon8.png" />
 					<div class="fleft text-short-menu black font-din">Légumes</div>
@@ -446,7 +494,7 @@
 			</a>
 			<div class="cb menu-line-up "></div>
 			<div class="cb menu-line-down "></div>
-			<a href="#recette" onclick="menu()">
+			<a href="#liste-recette" onclick="getListMenu(5);">
 				<div class="back-menu">
 					<img class="max-width-icon fleft" src="img/icon/icon9.png" />
 					<div class="fleft text-short-menu black font-din">Fruits</div>
@@ -454,7 +502,7 @@
 			</a>
 			<div class="cb menu-line-up "></div>
 			<div class="cb menu-line-down "></div>
-			<a href="#recette" onclick="menu()">
+			<a href="#liste-recette" onclick="getListMenu(6);">
 				<div class="back-menu">
 					<img class="max-width-icon fleft" src="img/icon/icon10.png" />
 					<div class="fleft text-short-menu black font-din">Dessert</div>
@@ -462,7 +510,7 @@
 			</a>
 			<div class="cb menu-line-up "></div>
 			<div class="cb menu-line-down "></div>
-			<a href="#recette" onclick="menu()">
+			<a href="#liste-recette" onclick="getListMenu(7);">
 				<div class="back-menu">
 					<img class="max-width-icon fleft" src="img/icon/icon11.png" />
 					<div class="fleft text-short-menu black font-din">Boissons</div>
@@ -473,9 +521,9 @@
 			<div class="back-inter-menu">
 				<div class="fleft text-short-menu black font-din">A PROPOS</div>
 			</div>
-			<div class="cb menu-line-up "></div>
-			<div class="cb menu-line-down "></div>
-			<a href="#recette" onclick="menu()">
+			<div class="cb menu-line-up"></div>
+			<div class="cb menu-line-down"></div>
+			<a onclick="changePage('credits');">
 				<div class="back-menu">
 					<img class="max-width-icon fleft" src="img/icon/icon12.png" />
 					<div class="fleft text-short-menu black font-din">Crédits</div>
@@ -483,7 +531,7 @@
 			</a>
 			<div class="cb menu-line-up "></div>
 			<div class="cb menu-line-down "></div>
-			<a href="#recette" onclick="menu()">
+			<a onclick="changePage('mentions');">
 				<div class="back-menu">
 					<img class="max-width-icon fleft" src="img/icon/icon13.png" />
 					<div class="fleft text-short-menu black font-din">Mentions légales</div>

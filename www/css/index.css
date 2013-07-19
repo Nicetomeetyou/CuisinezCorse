@@ -93,3 +93,10 @@ body {
 .tabs { position:relative; top:-45px; }
 .onglet-recette {  }
 /* ---------------------------------------------------- */
+
+/* LISTE ----------------------------------------------- */
+.photo-list { overflow:hidden; height:130px; line-height:130px; vertical-align:middle; }
+.align-middle { vertical-align:middle; margin:-130px 0;position:relative;top:-2px;} 
+.text-list { padding:0 15px 15px 15px; }
+.arrow-up { position:relative; z-index:2; top: -15px; max-width:40px; }
+/* ---------------------------------------------------- */
