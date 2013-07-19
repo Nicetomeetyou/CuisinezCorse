@@ -73,7 +73,7 @@
             // $.os.android=true;
             $.ui.autoLaunch = true;
             $.ui.openLinksNewTab = false;
-			//$.ui.removeFooterMenu();
+			$.ui.removeFooterMenu();
             //$.ui.resetScrollers=false;
             
 			$.ui.launch();
@@ -168,13 +168,16 @@
 			$(function() { $("#menu-custom").css("width", window.innerWidth - 50 + "px !important"); });
 			
 			function menu() {
-				alert("MENU");
 				if(!openMenu) { 
 					openMenu = true; 
-					$.ui.toggleSideMenu(true)
+					//$.ui.toggleSideMenu(true)
+					$("#content").css3Animate({x: -window.innerWidth + 50 + "px", time: "150ms", complete: function(canceled) { } }); 
+					$("#header").css3Animate({x: -window.innerWidth + 50 + "px", time: "150ms", complete: function(canceled) { } }); 
 				} else { 
 					openMenu = false; 
-					$.ui.toggleSideMenu(false)
+					//$.ui.toggleSideMenu(false)
+					$("#content").css3Animate({x: "0px", time: "150ms", complete: function(canceled) { } }); 
+					$("#header").css3Animate({x: "0px", time: "150ms", complete: function(canceled) { } }); 
 				}
 			}
         </script>
